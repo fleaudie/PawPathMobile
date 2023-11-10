@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PawPath"
         tools:targetApi="31">
         <activity
+            android:name=".HealthService"
+            android:exported="false" />
+        <activity
             android:name=".takvim"
             android:exported="false" />
         <activity
