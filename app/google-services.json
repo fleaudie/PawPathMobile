@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "425461681490",
+    "project_id": "pawpathproject-9aad5",
+    "storage_bucket": "pawpathproject-9aad5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425461681490:android:5ec156088a1f8abe173e8b",
+        "android_client_info": {
+          "package_name": "com.fleaudie.pawpath"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkV6gfNRIXUBYxaazIbxQSs4NEsETdqwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navMain"
+        android:icon="@drawable/main_icon"
+        android:title="" />
+    <item
+        android:id="@+id/navTakvim"
+        android:icon="@drawable/takvim_icon"
+        android:title="" />
+    <item
+        android:id="@+id/navPets"
+        android:icon="@drawable/pet_icon"
+        android:title="" />
+    <item
+        android:id="@+id/navProfile"
+        android:icon="@drawable/myprofile_icon"
+        android:title="" />
+</menu>
