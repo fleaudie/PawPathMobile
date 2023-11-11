@@ -129,7 +129,7 @@
             app:srcCompat="@drawable/yazi_kenarlik_yesil" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imgbtnEvcilHayvanEkle"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="90dp"
@@ -142,7 +142,7 @@
             app:srcCompat="@drawable/buton_yesil_kenar" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/txtHayvanAdi"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -159,7 +159,7 @@
             app:layout_constraintTop_toTopOf="@+id/imgHayvanAdi" />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/txtHayvanRengi"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -178,7 +178,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/txtHayvanYasi"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -197,7 +197,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/txtHayvanKilo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -205,7 +205,7 @@
             android:backgroundTint="#00FFFFFF"
             android:ems="10"
             android:gravity="center_horizontal|center_vertical"
-            android:hint="Boyu"
+            android:hint="Kilosu"
             android:inputType="text"
             android:textColorHint="#D4E8B0"
             app:layout_constraintBottom_toBottomOf="@+id/imgHayvanIrki4"
@@ -248,10 +248,10 @@
             android:text="Ekle"
             android:textColor="#8EBC38"
             android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton"
-            app:layout_constraintStart_toStartOf="@+id/imageButton"
-            app:layout_constraintTop_toTopOf="@+id/imageButton" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgbtnEvcilHayvanEkle"
+            app:layout_constraintEnd_toEndOf="@+id/imgbtnEvcilHayvanEkle"
+            app:layout_constraintStart_toStartOf="@+id/imgbtnEvcilHayvanEkle"
+            app:layout_constraintTop_toTopOf="@+id/imgbtnEvcilHayvanEkle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
