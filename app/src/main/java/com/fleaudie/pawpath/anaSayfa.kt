@@ -2,9 +2,13 @@ package com.fleaudie.pawpath
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class anaSayfa : AppCompatActivity() {
+    private lateinit var rcyUserPetMain : RecyclerView
+    private lateinit var myAdapter: petAdapterMain
+    private lateinit var userPetArrayList : ArrayList<userPet>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ana_sayfa)
@@ -15,5 +19,7 @@ class anaSayfa : AppCompatActivity() {
         bottomNav.menu.findItem(R.id.navTakvim).setIcon(R.drawable.calendar_icon)
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon)
         bottomNav.menu.findItem(R.id.navProfile).setIcon(R.drawable.profile_icon)
+
+
     }
 }

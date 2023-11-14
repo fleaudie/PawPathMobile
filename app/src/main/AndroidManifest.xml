@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,10 @@
         android:theme="@style/Theme.PawPath"
         tools:targetApi="31">
         <activity
-            android:name=".ovalkenar_turuncu"
+            android:name=".PetProfileEdit"
+            android:exported="false" />
+        <activity
+            android:name=".PetProfile"
             android:exported="false" />
         <activity
             android:name=".HealthService"
@@ -26,9 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".evcilHayvanlarim"
-            android:exported="false" />
-        <activity
-            android:name=".mailOnay"
             android:exported="false" />
         <activity
             android:name=".anaSayfa"

@@ -129,7 +129,7 @@
             app:srcCompat="@drawable/yazi_kenarlik_yesil" />
 
         <ImageButton
-            android:id="@+id/imgbtnEvcilHayvanEkle"
+            android:id="@+id/imgbtnAddPet"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="90dp"
@@ -142,7 +142,7 @@
             app:srcCompat="@drawable/buton_yesil_kenar" />
 
         <EditText
-            android:id="@+id/txtHayvanAdi"
+            android:id="@+id/txtPetName"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -158,18 +158,12 @@
             app:layout_constraintStart_toStartOf="@+id/imgHayvanAdi"
             app:layout_constraintTop_toTopOf="@+id/imgHayvanAdi" />
 
-        <EditText
-            android:id="@+id/txtHayvanRengi"
+        <Spinner
+            android:id="@+id/spnPetGender"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
-            android:backgroundTint="#00FFFFFF"
-            android:ems="10"
-            android:gravity="center_vertical"
-            android:hint="Rengi"
-            android:inputType="text"
-            android:textColorHint="#D4E8B0"
             app:layout_constraintBottom_toBottomOf="@+id/imgHayvanAdi3"
             app:layout_constraintEnd_toEndOf="@+id/imgHayvanAdi3"
             app:layout_constraintHorizontal_bias="0.0"
@@ -178,7 +172,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/txtHayvanYasi"
+            android:id="@+id/txtPetAge"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -197,7 +191,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/txtHayvanKilo"
+            android:id="@+id/txtPetWeight"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -216,7 +210,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <Spinner
-            android:id="@+id/spnIrk"
+            android:id="@+id/spnType"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -227,7 +221,7 @@
             app:layout_constraintTop_toTopOf="@+id/imgHayvanIrki" />
 
         <Spinner
-            android:id="@+id/spnCins"
+            android:id="@+id/spnBreed"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="25dp"
@@ -248,10 +242,10 @@
             android:text="Ekle"
             android:textColor="#8EBC38"
             android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imgbtnEvcilHayvanEkle"
-            app:layout_constraintEnd_toEndOf="@+id/imgbtnEvcilHayvanEkle"
-            app:layout_constraintStart_toStartOf="@+id/imgbtnEvcilHayvanEkle"
-            app:layout_constraintTop_toTopOf="@+id/imgbtnEvcilHayvanEkle" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgbtnAddPet"
+            app:layout_constraintEnd_toEndOf="@+id/imgbtnAddPet"
+            app:layout_constraintStart_toStartOf="@+id/imgbtnAddPet"
+            app:layout_constraintTop_toTopOf="@+id/imgbtnAddPet" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -277,7 +271,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyEvcilHayvanEkle"
+            android:id="@+id/rcyUserPets"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="19dp"

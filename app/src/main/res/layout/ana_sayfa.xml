@@ -1,23 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".anaSayfa">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="58dp">
+
+        <LinearLayout
+            android:id="@+id/linMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consEvcilHayanMain"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgEvcilHayvanMain"
+                        android:layout_width="0dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginEnd="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ovalkenar_yesil" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Evcil Hayvanlarım"
+                        android:textColor="#FFFFFF"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toStartOf="@+id/imgEvcilHayvanMain"
+                        app:layout_constraintTop_toTopOf="@+id/imgEvcilHayvanMain" />
+
+                    <TextView
+                        android:id="@+id/txtMainUserPetSeeAll"
+                        android:layout_width="79dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="22dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Tümünü Gör"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                        app:layout_constraintEnd_toEndOf="@+id/imgEvcilHayvanMain"
+                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyEvcilHayvanMain"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="19dp"
+                        android:layout_marginEnd="19dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgEvcilHayvanMain"
+                        app:layout_constraintEnd_toEndOf="@+id/imgEvcilHayvanMain"
+                        app:layout_constraintStart_toStartOf="@+id/imgEvcilHayvanMain"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/consEvcilHayanMain">
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="0dp"
+                        android:layout_height="190dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginEnd="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ovalkenar_pembe" />
+
+                    <TextView
+                        android:id="@+id/txtMainPlansSeeAll"
+                        android:layout_width="79dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="22dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Tümünü Gör"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+                        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Planlarım"
+                        android:textColor="#FFFFFF"
+                        android:textSize="19sp"
+                        app:layout_constraintStart_toStartOf="@+id/imageView11"
+                        app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyPlanMain"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="19dp"
+                        android:layout_marginEnd="19dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+                        app:layout_constraintStart_toStartOf="@+id/imageView11"
+                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="58dp"
             android:background="#D17D10"
             android:src="@drawable/main_icon"
             app:itemBackground="@null"
@@ -26,7 +167,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/consEvcilHayanMain"
+            app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/menu">
 
 
@@ -34,131 +175,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/consEvcilHayanMain"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imgEvcilHayvanMain"
-            android:layout_width="0dp"
-            android:layout_height="170dp"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="19dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ovalkenar_yesil" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="22dp"
-            android:fontFamily="@font/red_hat_display"
-            android:text="Evcil Hayvanlarım"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            app:layout_constraintStart_toStartOf="@+id/imgEvcilHayvanMain"
-            app:layout_constraintTop_toTopOf="@+id/imgEvcilHayvanMain" />
-
-        <TextView
-            android:id="@+id/txtEvcilHayvanTumu"
-            android:layout_width="79dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="22dp"
-            android:fontFamily="@font/red_hat_display"
-            android:text="Tümünü Gör"
-            android:textColor="#FFFFFF"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="@+id/imgEvcilHayvanMain"
-            app:layout_constraintTop_toTopOf="@+id/imgEvcilHayvanMain" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyEvcilHayvanMain"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/imgEvcilHayvanMain"
-            app:layout_constraintEnd_toEndOf="@+id/imgEvcilHayvanMain"
-            app:layout_constraintStart_toStartOf="@+id/imgEvcilHayvanMain"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="395dp"
-        android:layout_height="250dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="308dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="0dp"
-            android:layout_height="190dp"
-            android:layout_marginStart="19dp"
-            android:layout_marginEnd="19dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ovalkenar_pembe" />
-
-        <TextView
-            android:id="@+id/txtEvcilHayvanTumu2"
-            android:layout_width="79dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="22dp"
-            android:fontFamily="@font/red_hat_display"
-            android:text="Tümünü Gör"
-            android:textColor="#FFFFFF"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView11"
-            app:layout_constraintTop_toTopOf="@+id/imageView11" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="22dp"
-            android:fontFamily="@font/red_hat_display"
-            android:text="Planlarım"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            app:layout_constraintStart_toStartOf="@+id/imageView11"
-            app:layout_constraintTop_toTopOf="@+id/imageView11" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyPlanMain"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-            app:layout_constraintEnd_toEndOf="@+id/imageView11"
-            app:layout_constraintStart_toStartOf="@+id/imageView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
