@@ -1,7 +1,6 @@
 package com.fleaudie.pawpath
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +13,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -96,6 +99,12 @@ class evcilHayvanlarim : AppCompatActivity() {
 
         btnAddPet.setOnClickListener{
             addDataToFirestore()
+            txtPetName.text.clear()
+            txtPetAge.text.clear()
+            spnAnimalRace.setSelection(0)
+            spnAnimalBreed.setSelection(0)
+            txtPetWeight.text.clear()
+            spnPetGender.setSelection(0)
         }
     }
     private class CustomArrayAdapter(

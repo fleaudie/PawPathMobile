@@ -31,14 +31,13 @@ class PetProfile : AppCompatActivity() {
         txtPetGender.text = intent.getStringExtra("petGender")
         txtPetWeight.text = intent.getStringExtra("petWeight")
         txtPetBreed.text = intent.getStringExtra("petBreed")
-        val petUid = intent.getStringExtra("petUid")
+
+        val petUid = intent.getStringExtra("petUid") ?: ""
 
         btnEditPetProfile.setOnClickListener{
             val intent = Intent(this, PetProfileEdit::class.java)
             intent.putExtra("petUid",petUid)
             startActivity(intent)
         }
-
-
     }
 }

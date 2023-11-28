@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Diğer tema özellikleri -->
+
+        <!-- BottomNavigationView için özel stil -->
+        <item name="bottomNavigationStyle">@style/MyBottomNavStyle</item>
+    </style>
+
+    <!-- BottomNavigationView için stil -->
+    <style name="MyBottomNavStyle" parent="Widget.Design.BottomNavigationView">
+        <!-- BottomNavigationView'un arka plan rengi -->
+        <item name="android:background">@android:color/transparent</item>
+        <!-- BottomNavigationView'un öğeleri arasındaki arka plan rengi -->
+        <item name="android:itemBackground">@android:color/transparent</item>
+        <!-- Diğer özellikler -->
+    </style>
+</resources>

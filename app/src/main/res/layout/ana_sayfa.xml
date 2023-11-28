@@ -156,12 +156,12 @@
         android:layout_gravity="bottom">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:theme="@style/AppTheme"
             android:id="@+id/navMain"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:background="#D17D10"
             android:src="@drawable/main_icon"
-            app:itemBackground="@null"
             app:itemIconSize="30dp"
             app:itemIconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

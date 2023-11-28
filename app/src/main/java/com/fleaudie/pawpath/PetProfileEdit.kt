@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
@@ -43,9 +44,9 @@ class PetProfileEdit : AppCompatActivity() {
 
         btnEditPetInfo.setOnClickListener {
             Log.d("hata", "petid = $petUid")
-            changePetName()
-            intent = Intent(this,PetProfile::class.java)
+            intent = Intent(this,evcilHayvanlarim::class.java)
             startActivity(intent)
+            changePetName()
         }
     }
 
@@ -62,14 +63,26 @@ class PetProfileEdit : AppCompatActivity() {
             petDocRef.get()
                 .addOnSuccessListener { document ->
                     if (document.exists()) {
-                        petDocRef.update("petName", newPetName)
-                            petDocRef.update("petAge",newPetAge)
-                            .addOnSuccessListener {
-                                Toast.makeText(this, "Evcil hayvan adı güncellendi", Toast.LENGTH_SHORT).show()
-                            }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(this, "Hata: $e", Toast.LENGTH_SHORT).show()
-                            }
+                        if (newPetName.isNotEmpty()) {
+                            petDocRef.update("petName", newPetName)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Evcil hayvan adı güncellendi", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Hata: $e", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                        if (newPetAge.isNotEmpty()){
+                            petDocRef.update("petAge", newPetAge)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Evcil hayvan yaşı güncellendi", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Hata: $e", Toast.LENGTH_SHORT).show()
+                                }
+                        } else {
+                                Toast.makeText(this, "Evcil bilgileri güncellendi", Toast.LENGTH_SHORT).show()
+                        }
                     } else {
                         Toast.makeText(this, "Belirtilen evcil hayvan bulunamadı", Toast.LENGTH_SHORT).show()
                     }

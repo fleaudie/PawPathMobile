@@ -10,23 +10,31 @@ class menu {
             bottomNav.setOnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.navMain -> {
-                        val intent = Intent(context, anaSayfa::class.java)
-                        context.startActivity(intent)
+                        if (context !is anaSayfa) {
+                            val intent = Intent(context, anaSayfa::class.java)
+                            context.startActivity(intent)
+                        }
                         true
                     }
                     R.id.navTakvim -> {
-                        val intent = Intent(context, takvim::class.java)
-                        context.startActivity(intent)
+                        if (context !is takvim) {
+                            val intent = Intent(context, takvim::class.java)
+                            context.startActivity(intent)
+                        }
                         true
                     }
                     R.id.navPets -> {
-                        val intent = Intent(context, evcilHayvanlarim::class.java)
-                        context.startActivity(intent)
+                        if (context !is evcilHayvanlarim) {
+                            val intent = Intent(context, evcilHayvanlarim::class.java)
+                            context.startActivity(intent)
+                        }
                         true
                     }
                     R.id.navProfile -> {
-                        val intent = Intent(context, myProfile::class.java)
-                        context.startActivity(intent)
+                        if (context !is myProfile) {
+                            val intent = Intent(context, myProfile::class.java)
+                            context.startActivity(intent)
+                        }
                         true
                     }
                     else -> false

@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:theme="@style/AppTheme"
             android:id="@+id/navPets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
