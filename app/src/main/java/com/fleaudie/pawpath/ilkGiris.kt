@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 
 class ilkGiris : AppCompatActivity() {
@@ -12,7 +13,7 @@ class ilkGiris : AppCompatActivity() {
         setContentView(R.layout.ilk_giris)
 
         val txtGiris = findViewById<TextView>(R.id.txtilkGiris)
-        val btnKayit = findViewById<Button>(R.id.btnKayit)
+        val btnKayit = findViewById<ImageButton>(R.id.btnKayit)
 
         btnKayit.setOnClickListener {
             intent = Intent(this , kayitOl::class.java)

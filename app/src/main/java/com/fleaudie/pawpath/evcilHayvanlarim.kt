@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -51,6 +52,8 @@ class evcilHayvanlarim : AppCompatActivity() {
         bottomNav.menu.findItem(R.id.navTakvim).setIcon(R.drawable.calendar_icon)
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon_click)
         bottomNav.menu.findItem(R.id.navProfile).setIcon(R.drawable.profile_icon)
+
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
 
         btnAddPet = findViewById(R.id.imgbtnAddPet)
         txtPetName = findViewById(R.id.txtPetName)
@@ -117,7 +120,7 @@ class evcilHayvanlarim : AppCompatActivity() {
             val view = super.getView(position, convertView, parent) as TextView
 
             // Spinner içindeki metin rengini burada ayarlayabilirsiniz.
-            view.setTextColor(Color.parseColor("#D4E8B0"))
+            view.setTextColor(Color.parseColor("#8EBC38"))
 
             return view
         }
@@ -126,7 +129,7 @@ class evcilHayvanlarim : AppCompatActivity() {
             val view = super.getDropDownView(position, convertView, parent) as TextView
 
             // Spinner açıldığında görünen metin rengini burada ayarlayabilirsiniz.
-            view.setTextColor(Color.parseColor("#8EBC38"))
+            view.setTextColor(Color.parseColor("#D4E8B0"))
 
             return view
         }
@@ -140,31 +143,38 @@ class evcilHayvanlarim : AppCompatActivity() {
         val petAge = txtPetAge.text.toString()
         val petWeight = txtPetWeight.text.toString()
         val petGender = spnPetGender.selectedItem.toString()
-        val db = FirebaseFirestore.getInstance()
-        if (currentUser != null){
-            val userDocRef = db.collection("users").document(currentUser.uid).collection("userPets")
-            val newPetDocRef = userDocRef.document()
-            val userPets = hashMapOf(
-                "petUid" to newPetDocRef.id,
-                "petName" to petName,
-                "petRace" to animalRace,
-                "petBreed" to animalBreed,
-                "petAge" to petAge,
-                "petWeight" to petWeight,
-                "petGender" to petGender
-            )
-            newPetDocRef
-                .set(userPets)
-                .addOnSuccessListener { documentReference ->
-                    // Başarılı
-                    // Eğer başarılı olursa, belge referansını kullanabilirsiniz
-                    val petUid = newPetDocRef.id
-                    // Diğer işlemleri yapabilirsiniz
-                }
-                .addOnFailureListener { e ->
-                    // Hata
-                    // Firestore'a evcil hayvan bilgilerini eklerken bir hata oluştu
-                }
+
+        if (validateUserData(petName, animalRace, animalBreed, petAge, petWeight, petGender)) {
+            val db = FirebaseFirestore.getInstance()
+            if (currentUser != null) {
+                val userDocRef =
+                    db.collection("users").document(currentUser.uid).collection("userPets")
+                val newPetDocRef = userDocRef.document()
+                val userPets = hashMapOf(
+                    "petUid" to newPetDocRef.id,
+                    "petName" to petName,
+                    "petRace" to animalRace,
+                    "petBreed" to animalBreed,
+                    "petAge" to petAge,
+                    "petWeight" to petWeight,
+                    "petGender" to petGender
+                )
+                newPetDocRef
+                    .set(userPets)
+                    .addOnSuccessListener { documentReference ->
+                        // Başarılı
+                        // Eğer başarılı olursa, belge referansını kullanabilirsiniz
+                        val petUid = newPetDocRef.id
+                        // Diğer işlemleri yapabilirsiniz
+                    }
+                    .addOnFailureListener { e ->
+                        // Hata
+                        // Firestore'a evcil hayvan bilgilerini eklerken bir hata oluştu
+                    }
+            }
+        } else {
+            // Kullanıcı bilgileri eksik, hata mesajını göster
+            Toast.makeText(this, "Lütfen tüm bilgileri eksizsiz girin!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -193,6 +203,11 @@ class evcilHayvanlarim : AppCompatActivity() {
 
                 })
         }
+    }
+
+    private fun validateUserData(petName: String, animalRace: String, animalBreed: String, petAge: String, petWeight: String, petGender: String): Boolean {
+        return petName.isNotBlank() && animalRace.isNotBlank() && animalBreed.isNotBlank() &&
+                petAge.isNotBlank() && petWeight.isNotBlank() && petGender.isNotBlank()
     }
 
     private fun updateSecondSpinner(selectedItem: String) {

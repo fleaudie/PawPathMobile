@@ -21,14 +21,14 @@
             android:layout_height="wrap_content"
             android:background="#AFD368"
             android:src="@drawable/pet_icon"
-            app:itemBackground="@null"
             app:itemIconSize="30dp"
             app:itemIconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu">
+            app:menu="@menu/menu"
+            app:itemBackground="@android:color/transparent">
 
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
@@ -137,6 +137,8 @@
             android:layout_marginTop="21dp"
             android:layout_marginEnd="90dp"
             android:backgroundTint="#00FFFFFF"
+            android:longClickable="false"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgHayvanAdi3"
@@ -153,6 +155,7 @@
             android:gravity="center_vertical"
             android:hint="Hayvan adı"
             android:inputType="text"
+            android:textColor="#8EBC38"
             android:textColorHint="#D4E8B0"
             app:layout_constraintBottom_toBottomOf="@+id/imgHayvanAdi"
             app:layout_constraintEnd_toEndOf="@+id/imgHayvanAdi"
@@ -183,6 +186,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:hint="Yaşı"
             android:inputType="text"
+            android:textColor="#8EBC38"
             android:textColorHint="#D4E8B0"
             app:layout_constraintBottom_toBottomOf="@+id/imgHayvanIrki3"
             app:layout_constraintEnd_toEndOf="@+id/imgHayvanIrki3"
@@ -202,6 +206,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:hint="Kilosu"
             android:inputType="text"
+            android:textColor="#8EBC38"
             android:textColorHint="#D4E8B0"
             app:layout_constraintBottom_toBottomOf="@+id/imgHayvanIrki4"
             app:layout_constraintEnd_toEndOf="@+id/imgHayvanIrki4"
@@ -278,7 +283,6 @@
             android:layout_marginStart="19dp"
             android:layout_marginTop="19dp"
             android:layout_marginEnd="19dp"
-            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

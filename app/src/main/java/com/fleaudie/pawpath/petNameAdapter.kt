@@ -49,6 +49,7 @@ class petNameAdapter(private val petNameList: List<userPet>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val userpet : userPet = petNameList[position]
+
         holder.petName.text = userpet.petName
         holder.petAge.text = userpet.petAge
         holder.petGender.text = userpet.petGender

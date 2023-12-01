@@ -17,6 +17,8 @@ class takvim : AppCompatActivity() {
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon)
         bottomNav.menu.findItem(R.id.navProfile).setIcon(R.drawable.profile_icon)
 
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
+
         val calendarView = findViewById<CalendarView>(R.id.calTakvim)
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             //Seçilen tarih değişince yapılacak eylemler

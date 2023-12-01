@@ -15,7 +15,10 @@
             android:id="@+id/toolProfilePetHeader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="exitUntilCollapsed">
+            app:layout_scrollFlags="exitUntilCollapsed"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <!-- Toolbar, içerik başlığı vb. -->
             <ImageView

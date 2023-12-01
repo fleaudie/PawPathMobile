@@ -15,5 +15,7 @@ class myProfile : AppCompatActivity() {
         bottomNav.menu.findItem(R.id.navTakvim).setIcon(R.drawable.calendar_icon)
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon)
         bottomNav.menu.findItem(R.id.navProfile).setIcon(R.drawable.profile_icon_click)
+
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
     }
 }
