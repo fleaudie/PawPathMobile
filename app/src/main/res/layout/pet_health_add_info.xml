@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E6091"
+    tools:context=".PetHealth">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:theme="@style/AppBarLightBlue">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolPetHealthHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="exitUntilCollapsed"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <!-- Toolbar, içerik başlığı vb. -->
+            <ImageView
+                android:id="@+id/imgPetHealthHeader"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7"
+                tools:srcCompat="@drawable/back_header_lightblue" />
+
+            <ImageView
+                android:id="@+id/imgPetHealthBack"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/back_icon" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout18">
+
+                    <ImageButton
+                        android:id="@+id/imgbtnAddHealthInfo"
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginBottom="22dp"
+                        android:backgroundTint="#00FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/buton_beyaz_kenar" />
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Ekle"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgbtnAddHealthInfo"
+                        app:layout_constraintEnd_toEndOf="@+id/imgbtnAddHealthInfo"
+                        app:layout_constraintStart_toStartOf="@+id/imgbtnAddHealthInfo"
+                        app:layout_constraintTop_toTopOf="@+id/imgbtnAddHealthInfo" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout17">
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/dongle_bold"
+                        android:text="Hastalık Ekle"
+                        android:textColor="#FFFFFF"
+                        android:textSize="38sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView33"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView33"
+                        app:srcCompat="@drawable/ovalkenar_beyaz" />
+
+                    <Spinner
+                        android:id="@+id/spnDiseaseName"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView33"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView33"
+                        app:layout_constraintStart_toStartOf="@+id/imageView33"
+                        app:layout_constraintTop_toTopOf="@+id/imageView33" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout13">
+
+                    <TextView
+                        android:id="@+id/textView32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/dongle_bold"
+                        android:text="Aşı Ekle"
+                        android:textColor="#FFFFFF"
+                        android:textSize="38sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView31"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView32"
+                        app:srcCompat="@drawable/ovalkenar_beyaz" />
+
+                    <Spinner
+                        android:id="@+id/spnVaccineName"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView31"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView31"
+                        app:layout_constraintStart_toStartOf="@+id/imageView31"
+                        app:layout_constraintTop_toTopOf="@+id/imageView31" />
+
+                    <ImageView
+                        android:id="@+id/imageView32"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView31"
+                        app:srcCompat="@drawable/ovalkenar_beyaz" />
+
+                    <Spinner
+                        android:id="@+id/spnVaccineDate"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView32"
+                        app:layout_constraintStart_toStartOf="@+id/imageView32"
+                        app:layout_constraintTop_toTopOf="@+id/imageView32" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/dongle_bold"
+                        android:text="Alerji Ekle"
+                        android:textColor="#FFFFFF"
+                        android:textSize="38sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView29"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView26"
+                        app:srcCompat="@drawable/ovalkenar_beyaz" />
+
+                    <EditText
+                        android:id="@+id/txtAllergyName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginEnd="22dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:ems="10"
+                        android:fontFamily="@font/red_hat_display"
+                        android:hint="Alerji Adı"
+                        android:inputType="text"
+                        android:textColor="#1E6091"
+                        android:textColorHint="#1689AC"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView29"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView29"
+                        app:layout_constraintStart_toStartOf="@+id/imageView29"
+                        app:layout_constraintTop_toTopOf="@+id/imageView29" />
+
+                    <ImageView
+                        android:id="@+id/imageView30"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="22dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView29"
+                        app:srcCompat="@drawable/ovalkenar_beyaz" />
+
+                    <EditText
+                        android:id="@+id/txtAllergyInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginEnd="22dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:ems="10"
+                        android:fontFamily="@font/red_hat_display"
+                        android:gravity="bottom"
+                        android:hint="Alerji Açıklaması"
+                        android:inputType="textMultiLine"
+                        android:textColor="#1E6091"
+                        android:textColorHint="#1689AC"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView30"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView30"
+                        app:layout_constraintStart_toStartOf="@+id/imageView30"
+                        app:layout_constraintTop_toTopOf="@+id/imageView30" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

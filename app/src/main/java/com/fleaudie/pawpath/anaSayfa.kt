@@ -1,10 +1,17 @@
 package com.fleaudie.pawpath
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Outline
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.EventLogTags
 import android.util.Log
+import android.view.View
+import android.view.ViewOutlineProvider
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +31,7 @@ class anaSayfa : AppCompatActivity() {
     private lateinit var myAdapter: petAdapterMain
     private lateinit var userPetArrayList : ArrayList<userPet>
     private lateinit var db : FirebaseFirestore
+    private lateinit var btnServPetHealth : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ana_sayfa)
@@ -44,6 +52,13 @@ class anaSayfa : AppCompatActivity() {
         rcyUserPetMain.setHasFixedSize(true)
         rcyUserPetMain.adapter = myAdapter
         EventChangeListener()
+
+        btnServPetHealth = findViewById(R.id.imgServPetHealth)
+
+        btnServPetHealth.setOnClickListener {
+            val intent = Intent(this, HealthService::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun EventChangeListener(){

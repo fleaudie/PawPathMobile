@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consItemHealthServ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="0dp"
+            android:layout_height="144dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ovalkenar_beyaz" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgItemHealthServPetPhoto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="22dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            app:srcCompat="@drawable/profile_icon_click" />
+
+        <TextView
+            android:id="@+id/txtItemHealthServPetName"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/dongle_bold"
+            android:text="TextView"
+            android:textColor="#1E6091"
+            android:textSize="34sp"
+            app:layout_constraintStart_toEndOf="@+id/imgItemHealthServPetPhoto"
+            app:layout_constraintTop_toTopOf="@+id/imgItemHealthServPetPhoto" />
+
+        <TextView
+            android:id="@+id/txtItemHealthServPetBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:text="TextView"
+            android:textColor="#1A759F"
+            app:layout_constraintStart_toEndOf="@+id/imgItemHealthServPetPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/txtItemHealthServPetName" />
+
+        <ImageView
+            android:id="@+id/imgItemClickPetHealth"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgItemHealthServPetPhoto"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imgItemHealthServPetPhoto"
+            app:srcCompat="@drawable/click_button" />
+
+        <TextView
+            android:id="@+id/txtItemHealthServPetUid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00FFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/imgItemHealthServPetPhoto"
+            app:layout_constraintTop_toTopOf="@+id/imgItemHealthServPetPhoto" />
+
+        <TextView
+            android:id="@+id/txtItemHealthServPetAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00FFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/imgItemHealthServPetPhoto"
+            app:layout_constraintTop_toTopOf="@+id/imgItemHealthServPetPhoto" />
+
+        <TextView
+            android:id="@+id/txtItemHealthServPetWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00FFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/imgItemHealthServPetPhoto"
+            app:layout_constraintTop_toTopOf="@+id/imgItemHealthServPetPhoto" />
+
+        <TextView
+            android:id="@+id/txtItemHealthServPetGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#00FFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/imgItemHealthServPetPhoto"
+            app:layout_constraintTop_toTopOf="@+id/imgItemHealthServPetPhoto" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

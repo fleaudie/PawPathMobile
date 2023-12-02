@@ -7,6 +7,10 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="AppBarLightBlue" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">#168AAD</item>
+    </style>
+
     <style name="Theme.PawPath" parent="Base.Theme.PawPath" />
 
     <style name="Theme.PawPath.NoActionBar">

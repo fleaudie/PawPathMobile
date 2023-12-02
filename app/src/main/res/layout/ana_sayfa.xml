@@ -148,16 +148,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/constraintLayout2">
 
                     <ImageView
                         android:id="@+id/imageView4"
                         android:layout_width="0dp"
-                        android:layout_height="300dp"
+                        android:layout_height="380dp"
                         android:layout_marginStart="19dp"
                         android:layout_marginEnd="19dp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ovalkenar_mavi" />
@@ -174,6 +176,106 @@
                         android:textSize="19sp"
                         app:layout_constraintStart_toStartOf="@+id/imageView4"
                         app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+                    <ImageView
+                        android:id="@+id/imgServPetCare"
+                        android:layout_width="150dp"
+                        android:layout_height="115dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="22dp"
+                        android:clickable="true"
+                        app:layout_constraintStart_toStartOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12"
+                        app:srcCompat="@drawable/pet_care_icon" />
+
+                    <ImageView
+                        android:id="@+id/imgServNearVet"
+                        android:layout_width="150dp"
+                        android:layout_height="115dp"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="22dp"
+                        android:clickable="true"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/textView12"
+                        app:srcCompat="@drawable/near_vet_icon" />
+
+                    <ImageView
+                        android:id="@+id/imgServPetHealth"
+                        android:layout_width="150dp"
+                        android:layout_height="115dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        app:layout_constraintStart_toStartOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13"
+                        app:srcCompat="@drawable/pet_health_icon" />
+
+                    <ImageView
+                        android:id="@+id/imgServNearPetshop"
+                        android:layout_width="150dp"
+                        android:layout_height="115dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="22dp"
+                        android:clickable="true"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/textView17"
+                        app:srcCompat="@drawable/near_petshop_icon" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Günlük Bakım"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/imgServPetCare"
+                        app:layout_constraintStart_toStartOf="@+id/imgServPetCare"
+                        app:layout_constraintTop_toBottomOf="@+id/imgServPetCare" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Yakındaki Veterinerler"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/imgServNearVet"
+                        app:layout_constraintStart_toStartOf="@+id/imgServNearVet"
+                        app:layout_constraintTop_toBottomOf="@+id/imgServNearVet" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Sağlık Bilgileri"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/imgServPetHealth"
+                        app:layout_constraintStart_toStartOf="@+id/imgServPetHealth"
+                        app:layout_constraintTop_toBottomOf="@+id/imgServPetHealth" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/red_hat_display"
+                        android:text="Yakındaki Petshoplar"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/imgServNearPetshop"
+                        app:layout_constraintStart_toStartOf="@+id/imgServNearPetshop"
+                        app:layout_constraintTop_toBottomOf="@+id/imgServNearPetshop" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
