@@ -32,6 +32,7 @@ class PetProfileEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pet_profile_edit)
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
 
         petUid = intent.getStringExtra("petUid") ?: ""
         txtEditPetName = findViewById(R.id.txtEditPetName)

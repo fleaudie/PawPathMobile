@@ -2,8 +2,11 @@ package com.fleaudie.pawpath
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.TranslateAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +29,35 @@ class petAdapterMain(private val petNameList: List<userPet>): RecyclerView.Adapt
         val petBreed : TextView = itemView.findViewById(R.id.txtMainItemPetBreed)
 
         init {
+            imgPetProfile.setOnTouchListener { view, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        // Dokunma başladığında yukarı doğru animasyonu başlat
+                        val slideUp = TranslateAnimation(
+                            Animation.RELATIVE_TO_SELF, 0f,
+                            Animation.RELATIVE_TO_SELF, 0f,
+                            Animation.RELATIVE_TO_SELF, 0f,
+                            Animation.RELATIVE_TO_SELF, -0.1f
+                        )
+                        slideUp.duration = 200
+                        slideUp.fillAfter = true
+                        view.startAnimation(slideUp)
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        // Dokunma sona erdiğinde veya iptal edildiğinde aşağı doğru animasyonu başlat
+                        val slideDown = TranslateAnimation(
+                            Animation.RELATIVE_TO_SELF, 0f,
+                            Animation.RELATIVE_TO_SELF, 0f,
+                            Animation.RELATIVE_TO_SELF, -0.1f,
+                            Animation.RELATIVE_TO_SELF, 0f
+                        )
+                        slideDown.duration = 200
+                        slideDown.fillAfter = true
+                        view.startAnimation(slideDown)
+                    }
+                }
+                false
+            }
             imgPetProfile.setOnClickListener {
                 val context = itemView.context
                 val itemPetName = petName.text.toString()

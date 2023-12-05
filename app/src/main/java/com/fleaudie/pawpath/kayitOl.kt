@@ -21,6 +21,8 @@ class kayitOl : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.kayit_ol)
 
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
+
         auth = FirebaseAuth.getInstance()
         firestore = Firebase.firestore
         val btnKayit = findViewById<ImageButton>(R.id.imgbtnKayitOl)

@@ -94,7 +94,7 @@
             android:layout_marginStart="95dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="95dp"
-            android:backgroundTint="#D17D10"
+            android:backgroundTint="#D07D10"
             android:src="@drawable/buton_beyaz_kenar" />
 
         <TextView

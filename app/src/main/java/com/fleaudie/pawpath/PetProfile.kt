@@ -18,6 +18,8 @@ class PetProfile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pet_profile)
 
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
+
         btnEditPetProfile = findViewById(R.id.imgProfilePetEdit)
         txtPetName = findViewById(R.id.txtProfilePetName)
         txtPetAge = findViewById(R.id.txtProfilePetAge)

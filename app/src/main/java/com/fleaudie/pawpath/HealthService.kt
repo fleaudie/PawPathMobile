@@ -28,6 +28,8 @@ class HealthService : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.health_service)
 
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
+
         rcyHealthServ = findViewById(R.id.rcyHealthServ)
         userPetArrayList = arrayListOf()
         myAdapter = HealthServAdapter(userPetArrayList)

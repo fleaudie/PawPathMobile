@@ -14,11 +14,14 @@ class girisYap : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.giris_yap)
 
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
+
         val auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
         val sifre = findViewById<EditText>(R.id.txtSifreGiris)
         val eposta = findViewById<EditText>(R.id.txtMailGiris)
         val btnGiris = findViewById<ImageButton>(R.id.imgbtnGirisYap)
+
 
         btnGiris.setOnClickListener {
             val password = sifre.text.toString()
