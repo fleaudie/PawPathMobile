@@ -1,20 +1,16 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.animation.Animation
-import android.view.animation.TranslateAnimation
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import com.fleaudie.pawpath.R
 
-class ilkGiris : AppCompatActivity() {
+class FirstPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ilk_giris)
+        setContentView(R.layout.first_page)
 
         overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
 
@@ -22,7 +18,7 @@ class ilkGiris : AppCompatActivity() {
         val btnKayit = findViewById<ImageButton>(R.id.btnKayit)
 
         btnKayit.setOnClickListener {
-            intent = Intent(this , kayitOl::class.java)
+            intent = Intent(this , Signup::class.java)
             startActivity(intent)
         }
 
@@ -35,7 +31,7 @@ class ilkGiris : AppCompatActivity() {
                 it.setBackgroundResource(android.R.color.transparent)
             }, 500) // 500 milisaniye (0.5 saniye) sonra eski haline dön
 
-            intent = Intent(this, girisYap::class.java)
+            intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
     }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#D17D10"
     android:orientation="vertical"
-    tools:context=".kayitOl">
+    tools:context=".ui.Signup">
 
     <ImageView
         android:id="@+id/imageView5"

@@ -1,18 +1,18 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
+import com.fleaudie.pawpath.R
 import com.google.firebase.auth.FirebaseAuth
 
-class girisYap : AppCompatActivity() {
+class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.giris_yap)
+        setContentView(R.layout.login_activity)
 
         overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
 
@@ -36,7 +36,7 @@ class girisYap : AppCompatActivity() {
                                 // Kullanıcı giriş yaptı, e-posta adresi doğrulanmış mı kontrol edelim.
                                 if (user.isEmailVerified) {
                                     // E-posta adresi doğrulanmışsa anaSayfa'ya yönlendir.
-                                    val intent = Intent(this, anaSayfa::class.java)
+                                    val intent = Intent(this, Home::class.java)
                                     startActivity(intent)
                                 } else {
                                     Toast.makeText(

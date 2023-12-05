@@ -1,4 +1,4 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
 import android.content.Context
 import android.graphics.Color
@@ -16,6 +16,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fleaudie.pawpath.R
+import com.fleaudie.pawpath.adapter.PetNameAdapter
+import com.fleaudie.pawpath.data.UserPet
+import com.fleaudie.pawpath.menu.menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -24,7 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 
-class evcilHayvanlarim : AppCompatActivity() {
+class MyPets : AppCompatActivity() {
 
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private lateinit var btnAddPet : ImageButton
@@ -35,12 +39,12 @@ class evcilHayvanlarim : AppCompatActivity() {
     private lateinit var txtPetWeight : EditText
     private lateinit var spnPetGender : Spinner
     private lateinit var rcyUserPets : RecyclerView
-    private lateinit var myAdapter: petNameAdapter
-    private lateinit var userPetArrayList : ArrayList<userPet>
+    private lateinit var myAdapter: PetNameAdapter
+    private lateinit var userPetArrayList : ArrayList<UserPet>
     private lateinit var db : FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.evcil_hayvanlarim)
+        setContentView(R.layout.my_pets)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.navPets)
         menu.setupBottomNavigation(this, bottomNav)
@@ -58,9 +62,10 @@ class evcilHayvanlarim : AppCompatActivity() {
         txtPetAge = findViewById(R.id.txtPetAge)
         txtPetWeight = findViewById(R.id.txtPetWeight)
         spnPetGender = findViewById(R.id.spnPetGender)
+
         rcyUserPets = findViewById(R.id.rcyUserPets)
         userPetArrayList = arrayListOf()
-        myAdapter = petNameAdapter(userPetArrayList)
+        myAdapter = PetNameAdapter(userPetArrayList)
         rcyUserPets.layoutManager = LinearLayoutManager(this)
         rcyUserPets.setHasFixedSize(true)
 
@@ -191,7 +196,7 @@ class evcilHayvanlarim : AppCompatActivity() {
                         }
                         for (dc : DocumentChange in value?.documentChanges!!){
                             if (dc.type == DocumentChange.Type.ADDED){
-                                userPetArrayList.add(dc.document.toObject(userPet ::class.java))
+                                userPetArrayList.add(dc.document.toObject(UserPet ::class.java))
                             }
                         }
                         myAdapter.notifyDataSetChanged()

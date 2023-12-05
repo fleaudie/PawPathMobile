@@ -1,17 +1,19 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CalendarView
+import com.fleaudie.pawpath.R
+import com.fleaudie.pawpath.menu.menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class takvim : AppCompatActivity() {
+class Calendar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.takvim)
+        setContentView(R.layout.calendar_activity)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.navTakvim)
-        menu.setupBottomNavigation(this,bottomNav)
+        menu.setupBottomNavigation(this, bottomNav)
         bottomNav.menu.findItem(R.id.navMain).setIcon(R.drawable.home_icon)
         bottomNav.menu.findItem(R.id.navTakvim).setIcon(R.drawable.calendar_icon_click)
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon)

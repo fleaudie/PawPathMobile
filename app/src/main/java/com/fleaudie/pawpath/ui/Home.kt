@@ -1,4 +1,4 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,10 @@ import android.view.animation.TranslateAnimation
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fleaudie.pawpath.R
+import com.fleaudie.pawpath.adapter.PetAdapterMain
+import com.fleaudie.pawpath.data.UserPet
+import com.fleaudie.pawpath.menu.menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -18,19 +22,19 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 
-class anaSayfa : AppCompatActivity() {
+class Home : AppCompatActivity() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private lateinit var rcyUserPetMain : RecyclerView
-    private lateinit var myAdapter: petAdapterMain
-    private lateinit var userPetArrayList : ArrayList<userPet>
+    private lateinit var myAdapter: PetAdapterMain
+    private lateinit var userPetArrayList : ArrayList<UserPet>
     private lateinit var db : FirebaseFirestore
     private lateinit var btnServPetHealth : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ana_sayfa)
+        setContentView(R.layout.home_activity)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.navMain)
-        menu.setupBottomNavigation(this,bottomNav)
+        menu.setupBottomNavigation(this, bottomNav)
         bottomNav.menu.findItem(R.id.navMain).setIcon(R.drawable.home_icon_click)
         bottomNav.menu.findItem(R.id.navTakvim).setIcon(R.drawable.calendar_icon)
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon)
@@ -40,7 +44,7 @@ class anaSayfa : AppCompatActivity() {
 
         rcyUserPetMain = findViewById(R.id.rcyEvcilHayvanMain)
         userPetArrayList = arrayListOf()
-        myAdapter = petAdapterMain(userPetArrayList)
+        myAdapter = PetAdapterMain(userPetArrayList)
         rcyUserPetMain.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rcyUserPetMain.setHasFixedSize(true)
         rcyUserPetMain.adapter = myAdapter
@@ -102,7 +106,7 @@ class anaSayfa : AppCompatActivity() {
                         }
                         for (dc : DocumentChange in value?.documentChanges!!){
                             if (dc.type == DocumentChange.Type.ADDED){
-                                userPetArrayList.add(dc.document.toObject(userPet ::class.java))
+                                userPetArrayList.add(dc.document.toObject(UserPet ::class.java))
                             }
                         }
                         myAdapter.notifyDataSetChanged()

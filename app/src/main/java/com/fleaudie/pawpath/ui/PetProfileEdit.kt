@@ -1,28 +1,16 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
-import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.google.android.gms.tasks.Continuation
-import com.google.android.gms.tasks.Task
+import com.fleaudie.pawpath.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
-import java.io.IOException
-import java.util.UUID
 
 class PetProfileEdit : AppCompatActivity() {
     private lateinit var petUid: String
@@ -45,7 +33,7 @@ class PetProfileEdit : AppCompatActivity() {
 
         btnEditPetInfo.setOnClickListener {
             Log.d("hata", "petid = $petUid")
-            intent = Intent(this,evcilHayvanlarim::class.java)
+            intent = Intent(this, MyPets::class.java)
             startActivity(intent)
             changePetName()
         }

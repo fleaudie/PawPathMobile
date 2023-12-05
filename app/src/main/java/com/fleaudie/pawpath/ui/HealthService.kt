@@ -1,14 +1,15 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.Spinner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fleaudie.pawpath.R
+import com.fleaudie.pawpath.adapter.HealthServAdapter
+import com.fleaudie.pawpath.data.UserPet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
@@ -22,7 +23,7 @@ class HealthService : AppCompatActivity() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private lateinit var rcyHealthServ : RecyclerView
     private lateinit var myAdapter: HealthServAdapter
-    private lateinit var userPetArrayList : ArrayList<userPet>
+    private lateinit var userPetArrayList : ArrayList<UserPet>
     private lateinit var db : FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,7 @@ class HealthService : AppCompatActivity() {
 
         btnHealthServAddPet = findViewById(R.id.imgbtnHealthServAddPet)
         btnHealthServAddPet.setOnClickListener{
-            val intent = Intent(this, evcilHayvanlarim::class.java)
+            val intent = Intent(this, MyPets::class.java)
             startActivity(intent)
         }
     }
@@ -62,7 +63,7 @@ class HealthService : AppCompatActivity() {
                         }
                         for (dc : DocumentChange in value?.documentChanges!!){
                             if (dc.type == DocumentChange.Type.ADDED){
-                                userPetArrayList.add(dc.document.toObject(userPet ::class.java))
+                                userPetArrayList.add(dc.document.toObject(UserPet ::class.java))
                             }
                         }
                         myAdapter.notifyDataSetChanged()

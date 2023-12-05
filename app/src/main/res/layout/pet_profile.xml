@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8EBC38"
-    tools:context=".PetProfile">
+    tools:context=".ui.PetProfile">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

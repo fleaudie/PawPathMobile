@@ -1,4 +1,4 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.fleaudie.pawpath.ui.PetProfile
+import com.fleaudie.pawpath.R
+import com.fleaudie.pawpath.data.UserPet
 
-class petNameAdapter(private val petNameList: List<userPet>) : RecyclerView.Adapter<petNameAdapter.MyViewHolder>() {
+class PetNameAdapter(private val petNameList: List<UserPet>) : RecyclerView.Adapter<PetNameAdapter.MyViewHolder>() {
     public class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val petName : TextView = itemView.findViewById(R.id.txtItemPetName)
         val petAge : TextView = itemView.findViewById(R.id.txtItemPetAge)
@@ -48,7 +51,7 @@ class petNameAdapter(private val petNameList: List<userPet>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val userpet : userPet = petNameList[position]
+        val userpet : UserPet = petNameList[position]
 
         holder.petName.text = userpet.petName
         holder.petAge.text = userpet.petAge

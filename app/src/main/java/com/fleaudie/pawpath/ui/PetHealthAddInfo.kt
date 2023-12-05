@@ -1,4 +1,4 @@
-package com.fleaudie.pawpath
+package com.fleaudie.pawpath.ui
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -14,6 +14,9 @@ import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.fleaudie.pawpath.R
+import com.fleaudie.pawpath.adapter.PetNameAdapter
+import com.fleaudie.pawpath.data.UserPet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -30,8 +33,8 @@ class PetHealthAddInfo : AppCompatActivity() {
     private lateinit var spnVaccineDate : Spinner
     private lateinit var spnDiseaseName : Spinner
     private lateinit var rcyUserPets : RecyclerView
-    private lateinit var myAdapter: petNameAdapter
-    private lateinit var userPetArrayList : ArrayList<userPet>
+    private lateinit var myAdapter: PetNameAdapter
+    private lateinit var userPetArrayList : ArrayList<UserPet>
     private lateinit var db : FirebaseFirestore
     private lateinit var currentUserUid: String
     private lateinit var petUid: String
@@ -101,70 +104,71 @@ class PetHealthAddInfo : AppCompatActivity() {
             updateHealthInfo()
             txtAllergyName.text.clear()
             txtAllergyInfo.text.clear()
+            spnDiseaseName.setSelection(0)
+            spnVaccineDate.setSelection(0)
+            spnVaccineName.setSelection(0)
         }
     }
 
     private fun updateHealthInfo() {
         val allergyName = txtAllergyName.text.toString()
         val allergyInfo = txtAllergyInfo.text.toString()
+        val vaccineName = spnVaccineName.selectedItem.toString()
+        val vaccineDate = spnVaccineDate.selectedItem?.toString() ?: ""
+        val diseaseName = spnDiseaseName.selectedItem.toString()
         petUid = intent.getStringExtra("petUid") ?: ""
         db = FirebaseFirestore.getInstance()
 
-        if (currentUser != null){
-            if (allergyName.isNotEmpty() && allergyInfo.isNotEmpty()) {
-                val allergy = hashMapOf(
-                    "allergyName" to allergyName,
-                    "allergyInfo" to allergyInfo
-                )
-                db.collection("users").document(currentUser.uid).collection("userPets")
-                    .document(petUid).collection("allergys")
-                    .add(allergy)
-                    .addOnSuccessListener {
+        if (validateAllergyData(allergyName, allergyInfo, vaccineName, vaccineDate, diseaseName)) {
+            if (currentUser != null) {
+                if (allergyName.isNotEmpty() && allergyInfo.isNotEmpty()) {
+                    val allergyDocRef =
+                        db.collection("users").document(currentUser.uid).collection("userPets")
+                            .document(petUid).collection("allergies")
 
-                    }
-                    .addOnFailureListener {
+                    val newAllgeryDocRef = allergyDocRef.document()
+                    val healthList = hashMapOf(
+                        "allergyName" to allergyName,
+                        "allergyInfo" to allergyInfo
+                    )
+                    newAllgeryDocRef
+                        .set(healthList)
+                        .addOnSuccessListener { }
+                }
+                if (vaccineName != "Aşı Adı" && vaccineName.isNotEmpty() && vaccineDate != "Son Aşı Tarihi" && vaccineDate.isNotEmpty()) {
+                    val vaccineDocRef =
+                        db.collection("users").document(currentUser.uid).collection("userPets")
+                            .document(petUid).collection("vaccines")
 
-                    }
+                    val newVaccineDocRef = vaccineDocRef.document()
+                    val healthList = hashMapOf(
+                        "vaccineName" to vaccineName,
+                        "vaccineDate" to vaccineDate
+                    )
+                    newVaccineDocRef
+                        .set(healthList)
+                        .addOnSuccessListener { }
+                }
+
+                if (diseaseName != "Hastalık Adı" && diseaseName.isNotEmpty()) {
+                    val diseaseDocRef =
+                        db.collection("users").document(currentUser.uid).collection("userPets")
+                            .document(petUid).collection("diseases")
+
+                    val newDiseaseDocRef = diseaseDocRef.document()
+                    val healthList = hashMapOf(
+                        "diseaseName" to diseaseName
+                    )
+                    newDiseaseDocRef
+                        .set(healthList)
+                        .addOnSuccessListener { }
+                }
             }
         }
+    }
 
-        val vaccineName = spnVaccineName.selectedItem.toString()
-        val vaccineDate = spnVaccineDate.selectedItem?.toString() ?: ""
-        if (currentUser != null){
-            if (vaccineName != "Aşı Adı" && vaccineName.isNotEmpty() && vaccineDate != "Son Aşı Tarihi" && vaccineDate.isNotEmpty()) {
-                val vaccine = hashMapOf(
-                    "vaccineName" to vaccineName,
-                    "vaccineDate" to vaccineDate
-                )
-                db.collection("users").document(currentUser.uid).collection("userPets")
-                    .document(petUid).collection("vaccines")
-                    .add(vaccine)
-                    .addOnSuccessListener {
-
-                    }
-                    .addOnFailureListener {
-
-                    }
-            }
-        }
-
-        val diseaseName = spnDiseaseName.selectedItem.toString()
-        if (currentUser != null){
-            if (diseaseName != "Hastalık Adı" && diseaseName.isNotEmpty()) {
-                val disease = hashMapOf(
-                    "diseaseName" to diseaseName
-                )
-                db.collection("users").document(currentUser.uid).collection("userPets")
-                    .document(petUid).collection("diseases")
-                    .add(disease)
-                    .addOnSuccessListener {
-
-                    }
-                    .addOnFailureListener {
-
-                    }
-            }
-        }
+    private fun validateAllergyData(allergyName: String, allergyInfo: String, vaccineName: String, vaccineDate: String, diseaseName: String): Boolean {
+        return allergyName.isNotBlank() && allergyInfo.isNotBlank() && vaccineName.isNotBlank() && vaccineDate.isNotBlank() && diseaseName.isNotBlank()
     }
 
     private fun showDatePickerDialog() {

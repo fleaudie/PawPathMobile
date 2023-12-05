@@ -16,40 +16,40 @@
         android:theme="@style/Theme.PawPath"
         tools:targetApi="31">
         <activity
-            android:name=".PetHealthAddInfo"
+            android:name=".ui.PetHealthAddInfo"
             android:exported="false" />
         <activity
-            android:name=".PetHealth"
+            android:name=".ui.PetHealth"
             android:exported="false" />
         <activity
-            android:name=".PetProfileEdit"
+            android:name=".ui.PetProfileEdit"
             android:exported="false" />
         <activity
-            android:name=".PetProfile"
+            android:name=".ui.PetProfile"
             android:exported="false" />
         <activity
-            android:name=".HealthService"
+            android:name=".ui.HealthService"
             android:exported="false" />
         <activity
-            android:name=".takvim"
+            android:name=".ui.Calendar"
             android:exported="false" />
         <activity
-            android:name=".myProfile"
+            android:name=".ui.MyProfile"
             android:exported="false" />
         <activity
-            android:name=".evcilHayvanlarim"
+            android:name=".ui.MyPets"
             android:exported="false" />
         <activity
-            android:name=".anaSayfa"
+            android:name=".ui.Home"
             android:exported="false" />
         <activity
-            android:name=".girisYap"
+            android:name=".ui.Login"
             android:exported="false" />
         <activity
-            android:name=".kayitOl"
+            android:name=".ui.Signup"
             android:exported="false" />
         <activity
-            android:name=".ilkGiris"
+            android:name=".ui.FirstPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
