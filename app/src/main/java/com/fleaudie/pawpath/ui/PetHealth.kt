@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.fleaudie.pawpath.R
 import com.fleaudie.pawpath.adapter.AllergyAdapter
 import com.fleaudie.pawpath.data.HealthList
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
+import de.hdodenhof.circleimageview.CircleImageView
 
 class PetHealth : AppCompatActivity() {
 
@@ -29,11 +32,41 @@ class PetHealth : AppCompatActivity() {
     private lateinit var allergyAdapter: AllergyAdapter
     private lateinit var healthListArrayList : ArrayList<HealthList>
     private lateinit var petUid: String
+    private lateinit var imgPetHealthProfile : CircleImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pet_health)
 
         overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
+        imgPetHealthProfile = findViewById(R.id.imgPetHealthProfile)
+
+        petUid = intent.getStringExtra("petUid") ?: ""
+        db = FirebaseFirestore.getInstance()
+        if (currentUser != null) {
+            val userPetDocRef = db.collection("users").document(currentUser.uid).collection("userPets").document(petUid)
+
+            userPetDocRef.get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        // Firestore belgesi varsa, profilFotoURL alanını al
+                        val petPhotoUrl = documentSnapshot.getString("petPhotoUrl")
+
+                        // Şimdi Glide ile ImageView'a resmi yükle
+                        if (petPhotoUrl != null) {
+                            Glide.with(this)
+                                .load(petPhotoUrl)
+                                .into(imgPetHealthProfile)
+                        }
+                    } else {
+                        // Firestore belgesi yoksa, kullanıcıya bilgi ver
+                        Toast.makeText(this, "Profil fotoğrafı bulunamadı.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    // Firestore'dan belge çekme sırasında bir hata oluştu
+                    Toast.makeText(this, "Hata: $exception", Toast.LENGTH_SHORT).show()
+                }
+        }
 
         btnAddHealth = findViewById(R.id.imgbtnAddHealth)
         txtPetName = findViewById(R.id.txtPetHealthName)
@@ -42,7 +75,7 @@ class PetHealth : AppCompatActivity() {
         rcyPetHealthAllergy = findViewById(R.id.rcyPetHealthAllergy)
         healthListArrayList = arrayListOf()
         allergyAdapter = AllergyAdapter(healthListArrayList)
-        rcyPetHealthAllergy.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rcyPetHealthAllergy.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rcyPetHealthAllergy.setHasFixedSize(true)
 
 
@@ -52,9 +85,6 @@ class PetHealth : AppCompatActivity() {
 
         txtPetName.text = intent.getStringExtra("petName")
         txtPetBreed.text = intent.getStringExtra("petBreed")
-
-        petUid = intent.getStringExtra("petUid") ?: ""
-
 
         btnAddHealth.setOnClickListener {
             val intent = Intent(this, PetHealthAddInfo::class.java)

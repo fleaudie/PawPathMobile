@@ -19,58 +19,51 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import de.hdodenhof.circleimageview.CircleImageView
 
-class PetProfileEdit : AppCompatActivity() {
-    private lateinit var petUid: String
+class MyProfileEdit : AppCompatActivity() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
-    private lateinit var txtEditPetName: EditText
-    private lateinit var txtEditPetAge : EditText
+    private lateinit var txtEditName: EditText
+    private lateinit var txtEditSurname : EditText
     private val PICK_IMAGE_REQUEST = 71
     private var firebaseStore: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
-    private lateinit var imgEditPetPhoto : CircleImageView
+    private lateinit var imgEditPhoto : CircleImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pet_profile_edit)
+        setContentView(R.layout.my_profile_edit)
         overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
 
-        petUid = intent.getStringExtra("petUid") ?: ""
-        txtEditPetName = findViewById(R.id.txtEditPetName)
+        txtEditName = findViewById(R.id.txtEditName)
+        txtEditSurname = findViewById(R.id.txtEditSurname)
 
         firebaseStore = FirebaseStorage.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
 
-        imgEditPetPhoto = findViewById(R.id.imgEditPetPhoto)
-        imgEditPetPhoto.setOnClickListener { launchGallery() }
+        imgEditPhoto = findViewById(R.id.imgEditPhoto)
+        imgEditPhoto.setOnClickListener { launchGallery() }
 
-        val btnEditPetInfo = findViewById<ImageButton>(R.id.imgbtnEditPetInfo)
-        val imgEditPetPhoto = findViewById<ImageView>(R.id.imgEditPetPhoto)
+        val btnEditInfo = findViewById<ImageButton>(R.id.imgbtnEditInfo)
 
-        txtEditPetAge = findViewById(R.id.txtEditPetAge)
         val db = FirebaseFirestore.getInstance()
 
-        btnEditPetInfo.setOnClickListener {
-            Log.d("hata", "petid = $petUid")
-           
-            changePetName()
+        btnEditInfo.setOnClickListener {
+            changeName()
         }
 
         if (currentUser != null) {
-            petUid = intent.getStringExtra("petUid") ?: ""
+            val userDocRef = db.collection("users").document(currentUser.uid)
 
-            val userPetDocRef = db.collection("users").document(currentUser.uid).collection("userPets").document(petUid)
-
-            userPetDocRef.get()
+            userDocRef.get()
                 .addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {
                         // Firestore belgesi varsa, profilFotoURL alanını al
-                        val petPhotoUrl = documentSnapshot.getString("petPhotoUrl")
+                        val userPhotoUrl = documentSnapshot.getString("userPhotoUrl")
 
                         // Şimdi Glide ile ImageView'a resmi yükle
-                        if (petPhotoUrl != null) {
+                        if (userPhotoUrl != null) {
                             Glide.with(this)
-                                .load(petPhotoUrl)
-                                .into(imgEditPetPhoto)
+                                .load(userPhotoUrl)
+                                .into(imgEditPhoto)
                         }
                     } else {
                         // Firestore belgesi yoksa, kullanıcıya bilgi ver
@@ -84,41 +77,43 @@ class PetProfileEdit : AppCompatActivity() {
         }
     }
 
-    private fun changePetName() {
-        val newPetName = txtEditPetName.text.toString()
-        val newPetAge = txtEditPetAge.text.toString()
+    private fun changeName() {
+        val newName = txtEditName.text.toString()
+        val newSurname = txtEditSurname.text.toString()
         val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
 
         if (currentUserUid != null) {
             val db = FirebaseFirestore.getInstance()
-            val userPetsRef = db.collection("users").document(currentUserUid).collection("userPets")
-            val petDocRef = userPetsRef.document(petUid)
+            val userRef = db.collection("users")
+            val userDocRef = userRef.document(currentUserUid)
 
-            petDocRef.get()
+            userDocRef.get()
                 .addOnSuccessListener { document ->
                     if (document.exists()) {
-                        if (newPetName.isNotEmpty()) {
-                            petDocRef.update("petName", newPetName)
+                        if (newName.isNotEmpty()) {
+                            userDocRef.update("İsim", newName)
                                 .addOnSuccessListener {
-                                    Toast.makeText(this, "Evcil hayvan adı güncellendi", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this, "İsminiz güncellendi.", Toast.LENGTH_SHORT).show()
                                 }
                                 .addOnFailureListener { e ->
                                     Toast.makeText(this, "Hata: $e", Toast.LENGTH_SHORT).show()
                                 }
                         }
-                        if (newPetAge.isNotEmpty()){
-                            petDocRef.update("petAge", newPetAge)
+
+                        if (newSurname.isNotEmpty()) {
+                            userDocRef.update("Soyisim", newSurname)
                                 .addOnSuccessListener {
-                                    Toast.makeText(this, "Evcil hayvan yaşı güncellendi", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this, "Soyisiminiz güncellendi.", Toast.LENGTH_SHORT).show()
                                 }
                                 .addOnFailureListener { e ->
                                     Toast.makeText(this, "Hata: $e", Toast.LENGTH_SHORT).show()
                                 }
-                        } else {
-                                Toast.makeText(this, "Evcil bilgileri güncellendi", Toast.LENGTH_SHORT).show()
+                        }
+                        else {
+                            Toast.makeText(this, "Bilgileriniz güncellendi", Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(this, "Belirtilen evcil hayvan bulunamadı", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Bir hata oluştu.", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener { e ->
@@ -134,7 +129,6 @@ class PetProfileEdit : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        petUid = intent.getStringExtra("petUid") ?: ""
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
             if (data == null || data.data == null) {
@@ -173,18 +167,17 @@ class PetProfileEdit : AppCompatActivity() {
 
     private fun updateImageUrlInFirestore(imageUrl: String) {
         val db = FirebaseFirestore.getInstance()
-        petUid = intent.getStringExtra("petUid") ?: ""
 
         currentUser?.uid?.let { uid ->
             // Kullanıcının UID'sini kullanarak Firestore belgesini alın
-            val userPetDocRef = db.collection("users").document(currentUser.uid).collection("userPets").document(petUid)
+            val userDocRef = db.collection("users").document(currentUser.uid)
 
             // Yeni verileri hazırla
             val updatedData = hashMapOf(
-                "petPhotoUrl" to imageUrl
+                "userPhotoUrl" to imageUrl
             )
             // Firestore belgesini güncelle
-            userPetDocRef
+            userDocRef
                 .update(updatedData as Map<String, Any>)
                 .addOnSuccessListener {
                     // Başarılı

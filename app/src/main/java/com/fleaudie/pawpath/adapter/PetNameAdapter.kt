@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.fleaudie.pawpath.ui.PetProfile
 import com.fleaudie.pawpath.R
 import com.fleaudie.pawpath.data.UserPet
+import de.hdodenhof.circleimageview.CircleImageView
 
 class PetNameAdapter(private val petNameList: List<UserPet>) : RecyclerView.Adapter<PetNameAdapter.MyViewHolder>() {
     public class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -19,6 +21,7 @@ class PetNameAdapter(private val petNameList: List<UserPet>) : RecyclerView.Adap
         val petWeight : TextView = itemView.findViewById(R.id.txtItemPetWeight)
         val petBreed : TextView = itemView.findViewById(R.id.txtItemPetBreed)
         val petUid : TextView = itemView.findViewById(R.id.txtItemPetUid)
+        val petPhoto : CircleImageView = itemView.findViewById(R.id.imgPetPhoto)
         val consPet : ConstraintLayout = itemView.findViewById(R.id.consMyPet)
         init {
             consPet.setOnClickListener {
@@ -59,5 +62,11 @@ class PetNameAdapter(private val petNameList: List<UserPet>) : RecyclerView.Adap
         holder.petWeight.text = userpet.petWeight
         holder.petBreed.text = userpet.petBreed
         holder.petUid.text = userpet.petUid
+
+        userpet.petPhotoUrl?.let { url ->
+            Glide.with(holder.itemView.context)
+                .load(url)
+                .into(holder.petPhoto)
+        }
     }
 }

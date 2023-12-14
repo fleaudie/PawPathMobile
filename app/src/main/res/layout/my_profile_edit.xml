@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8EBC38"
-    tools:context=".ui.PetProfileEdit">
+    android:background="#F5C07A"
+    tools:context=".ui.MyProfileEdit">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:theme="@style/AppBarLightNude">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolEditProfilePetHeader"
+            android:id="@+id/toolEditProfileHeader"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="exitUntilCollapsed">
@@ -24,7 +25,7 @@
                 android:layout_height="60dp"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7"
-                tools:srcCompat="@drawable/back_header_green" />
+                tools:srcCompat="@drawable/back_header_lightnude" />
 
             <ImageView
                 android:id="@+id/imgEditProfileBack"
@@ -50,7 +51,7 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/consEditProfilePetBack"
+                android:id="@+id/consEditProfileBack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -59,15 +60,15 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/consEditPetPhoto"
+                    android:id="@+id/consEditPhoto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="@id/consEditProfilePetBack"
-                    app:layout_constraintStart_toStartOf="@id/consEditProfilePetBack"
+                    app:layout_constraintEnd_toEndOf="@id/consEditProfileBack"
+                    app:layout_constraintStart_toStartOf="@id/consEditProfileBack"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/imgEditPetPhoto"
+                        android:id="@+id/imgEditPhoto"
                         android:layout_width="190dp"
                         android:layout_height="190dp"
                         android:layout_gravity="center"
@@ -77,7 +78,7 @@
                         android:layout_marginBottom="15dp"
                         android:clickable="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/pet_profile_white"
+                        android:src="@drawable/user_profile_white"
                         app:civ_border_color="#FFFFFF"
                         app:civ_border_width="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,15 +89,15 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/consEditProfilePet"
-                    android:layout_width="0dp"
+                    android:id="@+id/consEditProfile"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="@id/consEditProfilePetBack"
-                    app:layout_constraintStart_toStartOf="@id/consEditProfilePetBack"
-                    app:layout_constraintTop_toBottomOf="@+id/consEditPetPhoto">
+                    app:layout_constraintEnd_toEndOf="@id/consEditProfileBack"
+                    app:layout_constraintStart_toStartOf="@id/consEditProfileBack"
+                    app:layout_constraintTop_toBottomOf="@id/consEditPhoto">
 
                     <ImageView
-                        android:id="@+id/imgEditPetInfoBack"
+                        android:id="@+id/imgEditInfoBack"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="19dp"
@@ -110,87 +111,88 @@
                         app:srcCompat="@drawable/ovalkenar_beyaz" />
 
                     <ImageView
-                        android:id="@+id/imgEditPetName"
+                        android:id="@+id/imgEditName"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="22dp"
                         android:layout_marginTop="22dp"
                         android:layout_marginEnd="22dp"
-                        app:layout_constraintEnd_toEndOf="@+id/imgEditPetInfoBack"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/imgEditPetInfoBack"
-                        app:layout_constraintTop_toTopOf="@id/imgEditPetInfoBack"
-                        app:srcCompat="@drawable/yazi_kenarlik_yesil" />
-
-                    <EditText
-                        android:id="@+id/txtEditPetName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:backgroundTint="#00FFFFFF"
-                        android:ems="10"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:hint="Hayvanın yeni adı"
-                        android:inputType="text"
-                        android:textColorHint="#D4E8B0"
-                        app:layout_constraintBottom_toBottomOf="@+id/imgEditPetName"
-                        app:layout_constraintEnd_toEndOf="@+id/imgEditPetName"
-                        app:layout_constraintStart_toStartOf="@+id/imgEditPetName"
-                        app:layout_constraintTop_toTopOf="@+id/imgEditPetName" />
+                        app:layout_constraintEnd_toEndOf="@+id/imgEditInfoBack"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/imgEditInfoBack"
+                        app:layout_constraintTop_toTopOf="@id/imgEditInfoBack"
+                        app:srcCompat="@drawable/yazi_kenarlik_turuncu" />
 
                     <ImageView
-                        android:id="@+id/imgEditPetAge"
+                        android:id="@+id/imgEditName2"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="22dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="22dp"
-                        app:layout_constraintEnd_toEndOf="@+id/imgEditPetInfoBack"
+                        app:layout_constraintEnd_toEndOf="@+id/imgEditInfoBack"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/imgEditPetInfoBack"
-                        app:layout_constraintTop_toBottomOf="@+id/imgEditPetName"
-                        app:srcCompat="@drawable/yazi_kenarlik_yesil" />
+                        app:layout_constraintStart_toStartOf="@+id/imgEditInfoBack"
+                        app:layout_constraintTop_toBottomOf="@+id/imgEditName"
+                        app:srcCompat="@drawable/yazi_kenarlik_turuncu" />
 
                     <EditText
-                        android:id="@+id/txtEditPetAge"
+                        android:id="@+id/txtEditName"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:backgroundTint="#00FFFFFF"
                         android:ems="10"
                         android:gravity="center_horizontal|center_vertical"
-                        android:hint="Hayvanın yeni yaşı"
+                        android:hint="Yeni isim"
                         android:inputType="text"
-                        android:textColorHint="#D4E8B0"
-                        app:layout_constraintBottom_toBottomOf="@+id/imgEditPetAge"
-                        app:layout_constraintEnd_toEndOf="@+id/imgEditPetAge"
-                        app:layout_constraintStart_toStartOf="@+id/imgEditPetAge"
-                        app:layout_constraintTop_toTopOf="@+id/imgEditPetAge" />
+                        android:textColor="#E4A451"
+                        android:textColorHint="#F4BF7A"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgEditName"
+                        app:layout_constraintEnd_toEndOf="@+id/imgEditName"
+                        app:layout_constraintStart_toStartOf="@+id/imgEditName"
+                        app:layout_constraintTop_toTopOf="@+id/imgEditName" />
+
+                    <EditText
+                        android:id="@+id/txtEditSurname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:ems="10"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:hint="Yeni soyisim"
+                        android:inputType="text"
+                        android:textColor="#E4A451"
+                        android:textColorHint="#F4BF7A"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgEditName2"
+                        app:layout_constraintEnd_toEndOf="@+id/imgEditName2"
+                        app:layout_constraintStart_toStartOf="@+id/imgEditName2"
+                        app:layout_constraintTop_toTopOf="@+id/imgEditName2" />
 
                     <ImageButton
-                        android:id="@+id/imgbtnEditPetInfo"
+                        android:id="@+id/imgbtnEditInfo"
                         android:layout_width="180dp"
                         android:layout_height="60dp"
-                        android:layout_marginTop="22dp"
-                        android:layout_marginBottom="22dp"
-                        android:backgroundTint="#00FFFFFF"
-                        app:layout_constraintBottom_toBottomOf="@id/imgEditPetInfoBack"
-                        app:layout_constraintEnd_toEndOf="@+id/imgEditPetInfoBack"
-                        app:layout_constraintStart_toStartOf="@+id/imgEditPetInfoBack"
-                        app:layout_constraintTop_toBottomOf="@id/imgEditPetAge"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="#FEFEFE"
+                        app:layout_constraintBottom_toBottomOf="@id/imgEditInfoBack"
+                        app:layout_constraintEnd_toEndOf="@+id/txtEditName"
+                        app:layout_constraintStart_toStartOf="@+id/txtEditName"
+                        app:layout_constraintTop_toBottomOf="@+id/imgEditName2"
                         app:layout_constraintVertical_bias="0.863"
-                        app:srcCompat="@drawable/buton_yesil_kenar" />
+                        app:srcCompat="@drawable/buton_turuncu_kenar" />
 
                     <TextView
-                        android:id="@+id/txtEditPetSave"
+                        android:id="@+id/txtEditSave"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/dongle_bold"
                         android:text="Kaydet"
-                        android:textColor="#8DBB38"
+                        android:textColor="#E4A451"
                         android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/imgbtnEditPetInfo"
-                        app:layout_constraintEnd_toEndOf="@+id/imgbtnEditPetInfo"
-                        app:layout_constraintStart_toStartOf="@+id/imgbtnEditPetInfo"
-                        app:layout_constraintTop_toTopOf="@+id/imgbtnEditPetInfo" />
+                        app:layout_constraintBottom_toBottomOf="@+id/imgbtnEditInfo"
+                        app:layout_constraintEnd_toEndOf="@+id/imgbtnEditInfo"
+                        app:layout_constraintStart_toStartOf="@+id/imgbtnEditInfo"
+                        app:layout_constraintTop_toTopOf="@+id/imgbtnEditInfo" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

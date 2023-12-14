@@ -61,6 +61,32 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
+                    <Button
+                        android:id="@+id/btnRemovePet"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginEnd="120dp"
+                        android:layout_marginBottom="22dp"
+                        android:background="@drawable/buton_beyaz_kenar"
+                        android:text="Kaldır"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -68,19 +94,23 @@
                     app:layout_constraintStart_toStartOf="@id/consProfilePetBack"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgProfilePetPhoto"
                         android:layout_width="190dp"
                         android:layout_height="190dp"
+                        android:layout_gravity="center"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="101dp"
                         android:layout_marginBottom="15dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pet_profile_white"
+                        app:civ_border_color="#FFFFFF"
+                        app:civ_border_width="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/profile_icon_click" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -385,6 +415,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

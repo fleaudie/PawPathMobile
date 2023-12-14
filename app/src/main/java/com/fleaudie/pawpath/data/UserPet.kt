@@ -6,5 +6,6 @@ data class UserPet(
     var petGender : String ?= null,
     var petWeight : String ?= null,
     var petBreed : String ?= null,
-    val petUid : String ?= null)
+    val petUid : String ?= null,
+    val petPhotoUrl : String ?= null)
 

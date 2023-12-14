@@ -29,6 +29,7 @@ class Home : AppCompatActivity() {
     private lateinit var userPetArrayList : ArrayList<UserPet>
     private lateinit var db : FirebaseFirestore
     private lateinit var btnServPetHealth : ImageView
+    private lateinit var btnServNearVet : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
@@ -51,6 +52,7 @@ class Home : AppCompatActivity() {
         EventChangeListener()
 
         btnServPetHealth = findViewById(R.id.imgServPetHealth)
+        btnServNearVet = findViewById(R.id.imgServNearVet)
 
         // Tıklama animasyonu
         btnServPetHealth.setOnTouchListener { view, event ->

@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.fleaudie.pawpath.R
 import com.google.firebase.auth.FirebaseAuth
 
-class Login : AppCompatActivity() {
+class LogIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)

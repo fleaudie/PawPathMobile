@@ -2,53 +2,45 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/consItemPetAllergy"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView26"
-            android:layout_width="305dp"
-            android:layout_height="100dp"
+            android:id="@+id/imageView35"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ovalkenar_koyumavi" />
+            app:srcCompat="@drawable/ovalkenar_pembe" />
 
         <TextView
-            android:id="@+id/txtItemAllergyName"
+            android:id="@+id/txtEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
-            android:layout_marginTop="22dp"
             android:fontFamily="@font/red_hat_display"
             android:text="TextView"
-            android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/imageView26"
-            app:layout_constraintTop_toTopOf="@+id/imageView26" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView35"
+            app:layout_constraintStart_toStartOf="@+id/imageView35"
+            app:layout_constraintTop_toTopOf="@+id/imageView35" />
 
         <TextView
-            android:id="@+id/txtItemAllergyInfo"
-            android:layout_width="0dp"
+            android:id="@+id/txtEventTime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="5dp"
             android:layout_marginEnd="22dp"
-            android:layout_marginBottom="22dp"
             android:fontFamily="@font/red_hat_display"
             android:text="TextView"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@id/imageView26"
-            app:layout_constraintEnd_toEndOf="@id/imageView26"
-            app:layout_constraintStart_toStartOf="@+id/imageView26"
-            app:layout_constraintTop_toBottomOf="@+id/txtItemAllergyName" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView35"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView35" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

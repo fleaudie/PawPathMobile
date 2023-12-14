@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import com.fleaudie.pawpath.R
+import com.google.firebase.auth.FirebaseAuth
 
 class FirstPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,11 +15,19 @@ class FirstPage : AppCompatActivity() {
 
         overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
 
+        val auth = FirebaseAuth.getInstance()
+        if (auth.currentUser != null) {
+            // Oturum açık ise, doğrudan ana ekranına yönlendir
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         val txtGiris = findViewById<TextView>(R.id.txtilkGiris)
         val btnKayit = findViewById<ImageButton>(R.id.btnKayit)
 
         btnKayit.setOnClickListener {
-            intent = Intent(this , Signup::class.java)
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
 
@@ -31,7 +40,7 @@ class FirstPage : AppCompatActivity() {
                 it.setBackgroundResource(android.R.color.transparent)
             }, 500) // 500 milisaniye (0.5 saniye) sonra eski haline dön
 
-            intent = Intent(this, Login::class.java)
+            val intent = Intent(this, LogIn::class.java)
             startActivity(intent)
         }
     }

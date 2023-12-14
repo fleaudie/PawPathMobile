@@ -59,7 +59,9 @@
             android:background="#00EC6060"
             android:clickable="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/profile_icon_click"
+            android:src="@drawable/pet_profile_white"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

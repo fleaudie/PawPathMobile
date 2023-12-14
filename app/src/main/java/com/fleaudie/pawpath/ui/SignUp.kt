@@ -12,13 +12,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 
-class Signup : AppCompatActivity() {
+class SignUp : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.singup_activity)
+        setContentView(R.layout.signup_activity)
 
         overridePendingTransition(R.anim.anim_in, R.anim.anim_out)
 
@@ -60,7 +60,7 @@ class Signup : AppCompatActivity() {
                                                 "Soyisim" to surname,
                                                 "Mail adresi" to mail ))
 
-                                            val intent = Intent(this, Login::class.java)
+                                            val intent = Intent(this, LogIn::class.java)
                                             startActivity(intent)
                                         } else {
                                             Toast.makeText(

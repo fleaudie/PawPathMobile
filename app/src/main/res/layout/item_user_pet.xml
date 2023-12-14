@@ -16,16 +16,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgPetPhoto"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="7dp"
             android:layout_marginBottom="7dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pet_profile_green"
+            app:civ_border_color="#8EBC38"
+            app:civ_border_width="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/brown_circle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtItemPetName"

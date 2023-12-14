@@ -10,6 +10,7 @@ import android.view.animation.TranslateAnimation
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.fleaudie.pawpath.ui.PetProfile
 import com.fleaudie.pawpath.R
 import com.fleaudie.pawpath.data.UserPet
@@ -109,6 +110,12 @@ class PetAdapterMain(private val petNameList: List<UserPet>): RecyclerView.Adapt
         holder.petGender.text = userpet.petGender
         holder.petWeight.text = userpet.petWeight
         holder.petBreed.text = userpet.petBreed
+
+        userpet.petPhotoUrl?.let { url ->
+            Glide.with(holder.itemView.context)
+                .load(url)
+                .into(holder.imgPetProfile)
+        }
     }
 
     override fun getItemCount(): Int {

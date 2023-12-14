@@ -1,26 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Calendar">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:theme="@style/AppTheme"
-            android:id="@+id/navTakvim"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout19"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <CalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="45dp"
+                        android:layout_marginEnd="19dp"
+                        android:background="@drawable/ovalkenar_pembe"
+                        android:weekNumberColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout19">
+
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/dongle_bold"
+                        android:text="Etkinlikler"
+                        android:textColor="#F08080"
+                        android:textSize="34sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyEvent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="58dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout20">
+
+                    <TextView
+                        android:id="@+id/textView37"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/dongle_bold"
+                        android:text="Etkinlik Ekle"
+                        android:textColor="#F08080"
+                        android:textSize="34sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnAddEvent"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginBottom="22dp"
+                        android:background="@drawable/btn_pink_border"
+                        android:text="Etkinlik Ekle"
+                        android:textColor="#F08080"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView34" />
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView37"
+                        app:srcCompat="@drawable/ovalkenar_pembe" />
+
+                    <EditText
+                        android:id="@+id/txtAddEvent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:ems="10"
+                        android:fontFamily="@font/red_hat_display"
+                        android:hint="Etkinlik Adı"
+                        android:inputType="text"
+                        android:textAlignment="center"
+                        android:textColorHint="#4E4E4E"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView20"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView20"
+                        app:layout_constraintStart_toStartOf="@+id/imageView20"
+                        app:layout_constraintTop_toTopOf="@+id/imageView20" />
+
+                    <ImageView
+                        android:id="@+id/imageView34"
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="19dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView20"
+                        app:srcCompat="@drawable/ovalkenar_pembe" />
+
+                    <EditText
+                        android:id="@+id/txtAddEventTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:ems="10"
+                        android:fontFamily="@font/red_hat_display"
+                        android:hint="Etkinlik Saati"
+                        android:inputType="datetime|time"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView34"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView34"
+                        app:layout_constraintStart_toStartOf="@+id/imageView34"
+                        app:layout_constraintTop_toTopOf="@+id/imageView34" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navTakvim"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="#F4978E"
             android:src="@drawable/takvim_icon"
+            android:theme="@style/AppTheme"
             app:itemBackground="@null"
             app:itemIconSize="30dp"
             app:itemIconTint="@color/white"
@@ -30,32 +198,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/menu">
 
-
         </com.google.android.material.bottomnavigation.BottomNavigationView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <CalendarView
-            android:id="@+id/calTakvim"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="19dp"
-            android:background="@drawable/ovalkenar_pembe"
-            android:weekNumberColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
