@@ -11,6 +11,10 @@
         <item name="colorPrimary">#168AAD</item>
     </style>
 
+    <style name="AppBarDarkBlue" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">#1E6091</item>
+    </style>
+
     <style name="AppBarLightNude" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">#E4A451</item>
     </style>

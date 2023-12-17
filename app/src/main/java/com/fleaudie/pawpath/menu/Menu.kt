@@ -9,7 +9,7 @@ import com.fleaudie.pawpath.ui.MyPets
 import com.fleaudie.pawpath.ui.MyProfile
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class menu {
+class Menu {
     companion object {
         fun setupBottomNavigation(context: Context, bottomNav: BottomNavigationView) {
             bottomNav.setOnNavigationItemSelectedListener { item ->

@@ -128,6 +128,7 @@ class PetHealthAddInfo : AppCompatActivity() {
 
                     val newAllgeryDocRef = allergyDocRef.document()
                     val healthList = hashMapOf(
+                        "allergyId" to newAllgeryDocRef.id,
                         "allergyName" to allergyName,
                         "allergyInfo" to allergyInfo
                     )

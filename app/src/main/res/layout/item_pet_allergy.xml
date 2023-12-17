@@ -41,14 +41,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="22dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="22dp"
             android:fontFamily="@font/red_hat_display"
             android:text="TextView"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="@id/imageView26"
-            app:layout_constraintEnd_toEndOf="@id/imageView26"
+            app:layout_constraintEnd_toStartOf="@+id/btnItemDeleteAllergy"
             app:layout_constraintStart_toStartOf="@+id/imageView26"
             app:layout_constraintTop_toBottomOf="@+id/txtItemAllergyName" />
+
+        <Button
+            android:id="@+id/btnItemDeleteAllergy"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/delete_white"
+            app:layout_constraintBottom_toBottomOf="@id/imageView26"
+            app:layout_constraintEnd_toEndOf="@+id/imageView26"
+            app:layout_constraintTop_toTopOf="@+id/imageView26" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

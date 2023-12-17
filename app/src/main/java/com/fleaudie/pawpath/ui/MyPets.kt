@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fleaudie.pawpath.R
 import com.fleaudie.pawpath.adapter.PetNameAdapter
 import com.fleaudie.pawpath.data.UserPet
-import com.fleaudie.pawpath.menu.menu
+import com.fleaudie.pawpath.menu.Menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -47,7 +47,7 @@ class MyPets : AppCompatActivity() {
         setContentView(R.layout.my_pets)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.navPets)
-        menu.setupBottomNavigation(this, bottomNav)
+        Menu.setupBottomNavigation(this, bottomNav)
         bottomNav.menu.findItem(R.id.navMain).setIcon(R.drawable.home_icon)
         bottomNav.menu.findItem(R.id.navTakvim).setIcon(R.drawable.calendar_icon)
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon_click)

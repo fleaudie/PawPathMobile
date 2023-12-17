@@ -10,10 +10,11 @@ import android.view.animation.TranslateAnimation
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fleaudie.pawpath.NearVets
 import com.fleaudie.pawpath.R
 import com.fleaudie.pawpath.adapter.PetAdapterMain
 import com.fleaudie.pawpath.data.UserPet
-import com.fleaudie.pawpath.menu.menu
+import com.fleaudie.pawpath.menu.Menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -30,12 +31,13 @@ class Home : AppCompatActivity() {
     private lateinit var db : FirebaseFirestore
     private lateinit var btnServPetHealth : ImageView
     private lateinit var btnServNearVet : ImageView
+    private lateinit var btnServPetCare : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.navMain)
-        menu.setupBottomNavigation(this, bottomNav)
+        Menu.setupBottomNavigation(this, bottomNav)
         bottomNav.menu.findItem(R.id.navMain).setIcon(R.drawable.home_icon_click)
         bottomNav.menu.findItem(R.id.navTakvim).setIcon(R.drawable.calendar_icon)
         bottomNav.menu.findItem(R.id.navPets).setIcon(R.drawable.paw_icon)
@@ -53,6 +55,7 @@ class Home : AppCompatActivity() {
 
         btnServPetHealth = findViewById(R.id.imgServPetHealth)
         btnServNearVet = findViewById(R.id.imgServNearVet)
+        btnServPetCare = findViewById(R.id.imgServPetCare)
 
         // Tıklama animasyonu
         btnServPetHealth.setOnTouchListener { view, event ->
@@ -83,6 +86,16 @@ class Home : AppCompatActivity() {
                 }
             }
             false
+        }
+
+        btnServPetCare.setOnClickListener {
+            val intent = Intent(this, DailyTasks::class.java)
+            startActivity(intent)
+        }
+
+        btnServNearVet.setOnClickListener {
+            val intent = Intent(this, NearVets::class.java)
+            startActivity(intent)
         }
 
         btnServPetHealth.setOnClickListener {
