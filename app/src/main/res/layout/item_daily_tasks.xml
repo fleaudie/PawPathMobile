@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/imgTaskEmoji"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="22dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
             app:layout_constraintStart_toStartOf="parent"

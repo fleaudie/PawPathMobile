@@ -17,8 +17,11 @@ import com.fleaudie.pawpath.databinding.FragmentEmojiDialogBinding
 class EmojiDialogFragment(private val emojiSelectedListener: (String) -> Unit) : DialogFragment() {
 
     private val emojiResourceIds = arrayOf(
-        R.drawable.emoji_heart, R.drawable.emoji_smile, R.drawable.emoji_smiling_face,
-        R.drawable.emoji_star, R.drawable.emoji_wink
+        R.drawable.emoji_dog_walking, R.drawable.emoji_bird, R.drawable.emoji_bird_feed, R.drawable.emoji_bird_feed2,
+        R.drawable.emoji_dog_bath, R.drawable.emoji_cat_bath, R.drawable.emoji_cat_feed, R.drawable.emoji_bird_release,
+        R.drawable.emoji_clean_litter, R.drawable.emoji_clean_litter2, R.drawable.emoji_cat_playing,
+        R.drawable.emoji_pet_bed, R.drawable.emoji_pet_bath, R.drawable.emoji_dog_toys, R.drawable.emoji_dog_playing,
+        R.drawable.emoji_dog_house, R.drawable.emoji_dog_food, R.drawable.emoji_close_cage
     )
 
     private lateinit var binding: FragmentEmojiDialogBinding
@@ -64,8 +67,8 @@ class EmojiDialogFragment(private val emojiSelectedListener: (String) -> Unit) :
             val emojiImageView = ImageView(context)
             emojiImageView.setImageResource(emojiResourceIds[position])
             emojiImageView.layoutParams = AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
+                150,  // Genişlik
+                150   // Yükseklik
             )
             return emojiImageView
         }

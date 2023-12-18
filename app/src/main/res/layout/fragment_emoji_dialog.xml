@@ -7,10 +7,11 @@
         android:id="@+id/emojiContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnWidth="90dp"
+        android:columnWidth="50dp"
         android:gravity="center"
+        android:horizontalSpacing="10dp"
         android:numColumns="auto_fit"
-        android:padding="16dp"
+        android:padding="10dp"
         android:stretchMode="columnWidth"
         android:verticalSpacing="10dp" />
 

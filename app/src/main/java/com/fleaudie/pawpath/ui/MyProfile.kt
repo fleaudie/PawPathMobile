@@ -114,13 +114,16 @@ class MyProfile : AppCompatActivity() {
         btnLogOut.setOnClickListener {
             val alertDialogBuilder = AlertDialog.Builder(this)
             alertDialogBuilder.setTitle("Çıkış Onayı")
-            alertDialogBuilder.setMessage("Uygulamadan çıkmak istediğinize emin misiniz?")
+            alertDialogBuilder.setMessage("Çıkış yapmak istediğinize emin misiniz?")
 
             // "Evet" butonu
             alertDialogBuilder.setPositiveButton("Evet") { _,_  ->
                 val auth = FirebaseAuth.getInstance()
                 auth.signOut()
                 finishAffinity()
+
+                val intent = Intent(this, FirstPage::class.java)
+                startActivity(intent)
             }
 
             // "Hayır" butonu

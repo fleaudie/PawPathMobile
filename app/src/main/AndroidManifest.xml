@@ -58,6 +58,9 @@
             android:name=".ui.MyProfile"
             android:exported="false" />
         <activity
+            android:name=".ui.MyProfileEdit"
+            android:exported="false" />
+        <activity
             android:name=".ui.MyPets"
             android:exported="false" />
         <activity

@@ -14,15 +14,16 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class AllergyAdapter (private val petHealthList: List<HealthList>): RecyclerView.Adapter<AllergyAdapter.MyViewHolder>() {
 
-    public class MyViewHolder(itemView: View, private val petHealthList: List<HealthList>) : RecyclerView.ViewHolder(itemView) {
-        val allergyName: TextView = itemView.findViewById(R.id.txtItemAllergyName)
+    public class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val allergyName : TextView = itemView.findViewById(R.id.txtItemAllergyName)
         val allergyInfo : TextView = itemView.findViewById(R.id.txtItemAllergyInfo)
         val btnItemDeleteAllergy : Button = itemView.findViewById(R.id.btnItemDeleteAllergy)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_pet_allergy, parent, false)
-        return MyViewHolder(itemView, petHealthList)
+        return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -30,6 +31,9 @@ class AllergyAdapter (private val petHealthList: List<HealthList>): RecyclerView
 
         holder.allergyName.text = healthList.allergyName
         holder.allergyInfo.text = healthList.allergyInfo
+
+        holder.btnItemDeleteAllergy.setOnClickListener {
+        }
     }
 
     override fun getItemCount(): Int {

@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fleaudie.pawpath.R
 import com.fleaudie.pawpath.adapter.AllergyAdapter
+import com.fleaudie.pawpath.adapter.DiseaseAdapter
+import com.fleaudie.pawpath.adapter.VaccineAdapter
 import com.fleaudie.pawpath.data.HealthList
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -29,8 +31,14 @@ class PetHealth : AppCompatActivity() {
     private lateinit var db : FirebaseFirestore
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private lateinit var rcyPetHealthAllergy : RecyclerView
+    private lateinit var rcyPetHealthVaccine : RecyclerView
+    private lateinit var rcyPetHealthDisease : RecyclerView
     private lateinit var allergyAdapter: AllergyAdapter
-    private lateinit var healthListArrayList : ArrayList<HealthList>
+    private lateinit var vaccineAdapter : VaccineAdapter
+    private lateinit var diseaseAdapter: DiseaseAdapter
+    private lateinit var allergyListArrayList : ArrayList<HealthList>
+    private lateinit var diseaseListArrayList : ArrayList<HealthList>
+    private lateinit var vaccineListArrayList : ArrayList<HealthList>
     private lateinit var petUid: String
     private lateinit var imgPetHealthProfile : CircleImageView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +65,8 @@ class PetHealth : AppCompatActivity() {
                                 .load(petPhotoUrl)
                                 .into(imgPetHealthProfile)
                         }
+                        txtPetName.text = documentSnapshot.getString("petName")
+                        txtPetBreed.text = documentSnapshot.getString("petBreed")
                     } else {
                         // Firestore belgesi yoksa, kullanıcıya bilgi ver
                         Toast.makeText(this, "Profil fotoğrafı bulunamadı.", Toast.LENGTH_SHORT).show()
@@ -67,24 +77,41 @@ class PetHealth : AppCompatActivity() {
                     Toast.makeText(this, "Hata: $exception", Toast.LENGTH_SHORT).show()
                 }
         }
+        else{
+            txtPetName.text = intent.getStringExtra("petName")
+            txtPetBreed.text = intent.getStringExtra("petBreed")
+        }
 
         btnAddHealth = findViewById(R.id.imgbtnAddHealth)
         txtPetName = findViewById(R.id.txtPetHealthName)
         txtPetBreed = findViewById(R.id.txtPetHealthBreed)
 
         rcyPetHealthAllergy = findViewById(R.id.rcyPetHealthAllergy)
-        healthListArrayList = arrayListOf()
-        allergyAdapter = AllergyAdapter(healthListArrayList)
+        allergyListArrayList = arrayListOf()
+        allergyAdapter = AllergyAdapter(allergyListArrayList)
         rcyPetHealthAllergy.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rcyPetHealthAllergy.setHasFixedSize(true)
-
-
         rcyPetHealthAllergy.adapter = allergyAdapter
+
+        rcyPetHealthVaccine = findViewById(R.id.rcyPetHealthVaccine)
+        vaccineListArrayList = arrayListOf()
+        vaccineAdapter = VaccineAdapter(vaccineListArrayList)
+        rcyPetHealthVaccine.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rcyPetHealthVaccine.setHasFixedSize(true)
+
+        rcyPetHealthVaccine.adapter = vaccineAdapter
+
+        rcyPetHealthDisease = findViewById(R.id.rcyPetHealthDisease)
+        diseaseListArrayList = arrayListOf()
+        diseaseAdapter = DiseaseAdapter(diseaseListArrayList)
+        rcyPetHealthDisease.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rcyPetHealthDisease.setHasFixedSize(true)
+
+        rcyPetHealthDisease.adapter = diseaseAdapter
 
         EventChangeListener()
 
-        txtPetName.text = intent.getStringExtra("petName")
-        txtPetBreed.text = intent.getStringExtra("petBreed")
+
 
         btnAddHealth.setOnClickListener {
             val intent = Intent(this, PetHealthAddInfo::class.java)
@@ -111,10 +138,54 @@ class PetHealth : AppCompatActivity() {
                         }
                         for (dc : DocumentChange in value?.documentChanges!!){
                             if (dc.type == DocumentChange.Type.ADDED){
-                                healthListArrayList.add(dc.document.toObject(HealthList::class.java))
+                                allergyListArrayList.add(dc.document.toObject(HealthList::class.java))
                             }
                         }
                         allergyAdapter.notifyDataSetChanged()
+                    }
+
+                })
+        }
+
+        if (userUID != null){
+            db.collection("users").document(userUID).collection("userPets").document(petUid).collection("vaccines")
+                .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                    override fun onEvent(
+                        value: QuerySnapshot?,
+                        error: FirebaseFirestoreException?
+                    ) {
+                        if (error != null){
+                            Log.e("firestore error", error.message.toString())
+                            return
+                        }
+                        for (dc : DocumentChange in value?.documentChanges!!){
+                            if (dc.type == DocumentChange.Type.ADDED){
+                                vaccineListArrayList.add(dc.document.toObject(HealthList::class.java))
+                            }
+                        }
+                        vaccineAdapter.notifyDataSetChanged()
+                    }
+
+                })
+        }
+
+        if (userUID != null){
+            db.collection("users").document(userUID).collection("userPets").document(petUid).collection("diseases")
+                .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                    override fun onEvent(
+                        value: QuerySnapshot?,
+                        error: FirebaseFirestoreException?
+                    ) {
+                        if (error != null){
+                            Log.e("firestore error", error.message.toString())
+                            return
+                        }
+                        for (dc : DocumentChange in value?.documentChanges!!){
+                            if (dc.type == DocumentChange.Type.ADDED){
+                                diseaseListArrayList.add(dc.document.toObject(HealthList::class.java))
+                            }
+                        }
+                        diseaseAdapter.notifyDataSetChanged()
                     }
 
                 })

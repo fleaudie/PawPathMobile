@@ -25,6 +25,7 @@ class PetProfile : AppCompatActivity() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private lateinit var db : FirebaseFirestore
     private lateinit var btnRemovePet : Button
+    private lateinit var btnGoHealthInfo : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pet_profile)
@@ -39,6 +40,7 @@ class PetProfile : AppCompatActivity() {
         txtPetBreed = findViewById(R.id.txtProfilePetBreed)
         imgProfilePetPhoto = findViewById(R.id.imgProfilePetPhoto)
         btnRemovePet = findViewById(R.id.btnRemovePet)
+        btnGoHealthInfo = findViewById(R.id.btnGoHealthInfo)
 
         val petUid = intent.getStringExtra("petUid") ?: ""
         db = FirebaseFirestore.getInstance()
@@ -57,6 +59,11 @@ class PetProfile : AppCompatActivity() {
                                 .load(petPhotoUrl)
                                 .into(imgProfilePetPhoto)
                         }
+                        txtPetName.text = documentSnapshot.getString("petName")
+                        txtPetAge.text = documentSnapshot.getString("petAge")
+                        txtPetGender.text = documentSnapshot.getString("petGender")
+                        txtPetWeight.text = documentSnapshot.getString("petWeight")
+                        txtPetBreed.text =documentSnapshot.getString("petBreed")
                     } else {
                         // Firestore belgesi yoksa, kullanıcıya bilgi ver
                         Toast.makeText(this, "Profil fotoğrafı bulunamadı.", Toast.LENGTH_SHORT).show()
@@ -67,15 +74,24 @@ class PetProfile : AppCompatActivity() {
                     Toast.makeText(this, "Hata: $exception", Toast.LENGTH_SHORT).show()
                 }
         }
+        else{
+            txtPetName.text = intent.getStringExtra("petName")
+            txtPetAge.text = intent.getStringExtra("petAge")
+            txtPetGender.text = intent.getStringExtra("petGender")
+            txtPetWeight.text = intent.getStringExtra("petWeight")
+            txtPetBreed.text = intent.getStringExtra("petBreed")
+        }
 
-        txtPetName.text = intent.getStringExtra("petName")
-        txtPetAge.text = intent.getStringExtra("petAge")
-        txtPetGender.text = intent.getStringExtra("petGender")
-        txtPetWeight.text = intent.getStringExtra("petWeight")
-        txtPetBreed.text = intent.getStringExtra("petBreed")
+
 
         btnEditPetProfile.setOnClickListener{
             val intent = Intent(this, PetProfileEdit::class.java)
+            intent.putExtra("petUid",petUid)
+            startActivity(intent)
+        }
+
+        btnGoHealthInfo.setOnClickListener {
+            val intent = Intent(this, PetHealth::class.java)
             intent.putExtra("petUid",petUid)
             startActivity(intent)
         }
