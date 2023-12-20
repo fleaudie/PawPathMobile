@@ -14,12 +14,8 @@ import com.fleaudie.pawpath.data.EventModel
 import com.fleaudie.pawpath.menu.Menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
-import java.util.Calendar
+
 class Calendar : AppCompatActivity() {
 
     private val currentUser = FirebaseAuth.getInstance().currentUser
@@ -51,36 +47,37 @@ class Calendar : AppCompatActivity() {
         btnAddEvent = findViewById(R.id.btnAddEvent)
         txtAddEvent = findViewById(R.id.txtAddEvent)
         calendarView = findViewById(R.id.calendarView)
-
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val selectedDate = "$dayOfMonth/${month + 1}/$year"
-
-            // Günlük planları kontrol et ve ekrana göster
-            showEventForDate(selectedDate)
-        }
-
         rcyEvents = findViewById(R.id.rcyEvent)
         eventAdapter = EventAdapter(eventListArrayList)
         rcyEvents.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rcyEvents.setHasFixedSize(true)
         rcyEvents.adapter = eventAdapter
 
-        EventChangeListener()
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val selectedDate = "$dayOfMonth/${month + 1}/$year"
+            Log.d("Selected Date", selectedDate)
 
-        btnAddEvent.setOnClickListener {
-            val selectedDate = getSelectedDate()
-            val eventText = txtAddEvent.text.toString()
-            val eventTime = txtAddEventTime.text.toString()
+            showEventForDate(selectedDate)
 
-            if (selectedDate.isNotEmpty() && eventText.isNotEmpty() && eventTime.isNotEmpty()) {
-                // Kullanıcının girdiği metni RecyclerView'e ekle
-                // Kullanıcının girdiği metni Firestore'a kaydet
-                addEventForDate(selectedDate, eventText, eventTime)
+            btnAddEvent.setOnClickListener {
+                val eventText = txtAddEvent.text.toString()
+                val eventTime = txtAddEventTime.text.toString()
+
+                if (selectedDate.isNotEmpty() && eventText.isNotEmpty() && eventTime.isNotEmpty()) {
+                    // Kullanıcının girdiği metni RecyclerView'e ekle
+                    // Kullanıcının girdiği metni Firestore'a kaydet
+                    addEventForDate(selectedDate, eventText, eventTime)
+
+                    // Etkinlikleri göster
+                    showEventForDate(selectedDate)
+                }
+
+                // Ekledikten sonra EditText'leri temizle
+                txtAddEvent.text.clear()
+                txtAddEventTime.text.clear()
             }
-
-            txtAddEvent.text.clear()
-            txtAddEventTime.text.clear()
         }
+
     }
 
     private fun addEventForDate(selectedDate: String, event: String, eventTime: String) {
@@ -90,7 +87,7 @@ class Calendar : AppCompatActivity() {
             val eventDocRef =
                 db.collection("users").document(currentUserUid).collection("events")
                     .document(selectedDate)
-                    .collection("dailyEvents") // dailyEvents koleksiyonuna geçiş yaptık
+                    .collection("dailyEvents")
 
             // Eğer belirli bir tarih için belirli bir etkinlik varsa, koleksiyona yeni etkinliği ekleyin
             val newEventModel = hashMapOf(
@@ -103,9 +100,7 @@ class Calendar : AppCompatActivity() {
                 .addOnSuccessListener { documentReference ->
                     // Yeni etkinliği ekledikten sonra güncellenmiş etkinlikleri göster
                     // Burada eklenen etkinliği manuel olarak listeye ekleyebiliriz
-                    val addedEventModel = EventModel(event, eventTime)
-                    eventListArrayList.add(addedEventModel)
-                    eventAdapter.notifyDataSetChanged()
+                    Log.d("Firestore", "Event added successfully.")
                     Log.d("Selected Date", selectedDate)
                 }
                 .addOnFailureListener { exception ->
@@ -115,7 +110,6 @@ class Calendar : AppCompatActivity() {
                 }
         }
     }
-
 
     private fun showEventForDate(selectedDate: String) {
         // Bu kısımda seçilen tarihe göre günlük planları kontrol edip, eventListArrayList içeriğini güncelleyin
@@ -148,50 +142,6 @@ class Calendar : AppCompatActivity() {
                     // Hata durumu hakkında bir şey yapmanız gerekiyorsa buraya ekleyebilirsiniz.
                     Log.e("Firestore Error", exception.message.toString())
                 }
-        }
-    }
-
-    private fun getSelectedDate(): String {
-        // Seçilen tarihi al ve uygun formata çevir
-        val selectedDate = calendarView.date
-        val cal = Calendar.getInstance()
-        cal.timeInMillis = selectedDate
-
-        val year = cal.get(Calendar.YEAR)
-        val month = cal.get(Calendar.MONTH)
-        val dayOfMonth = cal.get(Calendar.DAY_OF_MONTH)
-
-        // Ay ve gün için tek haneli sayıları iki haneli yap
-        val monthString = if (month + 1 < 10) "0${month + 1}" else (month + 1).toString()
-        val dayString = if (dayOfMonth < 10) "0$dayOfMonth" else dayOfMonth.toString()
-
-        return "$dayString/$monthString/$year"
-    }
-
-
-    private fun EventChangeListener(){
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        val userUID = currentUser?.uid
-        if (userUID != null){
-            db.collection("users").document(userUID).collection("events")
-                .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                    override fun onEvent(
-                        value: QuerySnapshot?,
-                        error: FirebaseFirestoreException?
-                    ) {
-                        if (error != null){
-                            Log.e("firestore error", error.message.toString())
-                            return
-                        }
-                        for (dc : DocumentChange in value?.documentChanges!!){
-                            if (dc.type == DocumentChange.Type.ADDED){
-                                eventListArrayList.add(dc.document.toObject(EventModel::class.java))
-                            }
-                        }
-                        eventAdapter.notifyDataSetChanged()
-                    }
-
-                })
         }
     }
 

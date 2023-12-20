@@ -104,10 +104,9 @@
                         android:layout_height="40dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_task_check"
+                        android:src="@drawable/select_emoji"
                         app:layout_constraintStart_toStartOf="@+id/imageView37"
-                        app:layout_constraintTop_toTopOf="@+id/imageView37"
-                        app:srcCompat="@drawable/ovalkenar_koyumavi" />
+                        app:layout_constraintTop_toTopOf="@+id/imageView37" />
 
                     <Button
                         android:id="@+id/btnAddTask"
